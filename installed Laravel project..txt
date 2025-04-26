@@ -1,0 +1,9 @@
+installed Laravel project.
+installed API.
+run migration files on both testing and production databases.
+delete blade engine.
+
+
+* User Signup *
+
+End point
