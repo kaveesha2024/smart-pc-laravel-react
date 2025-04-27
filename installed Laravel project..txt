@@ -7,4 +7,8 @@ delete blade engine.
 * User Signup *
 
 End point
-finished the user signup method. Has to handle request validations and failed validations.
+finished the user signup method.
+
+* User Sign in  *
+
+End point

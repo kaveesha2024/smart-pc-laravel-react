@@ -30,7 +30,7 @@ class CreateUserRequest extends FormRequest
         return [
             'first_name' => 'required|string|min:3|max:255',
             'last_name' => 'required|string',
-            'email' => 'required|string|email|max:255|unique:users,email',
+            'email' => 'required|email|max:255|unique:users,email',
             'password' => ['required', Password::min(8)->mixedCase()->numbers()->uncompromised()],
         ];
     }

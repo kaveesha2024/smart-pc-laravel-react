@@ -23,7 +23,7 @@ final class CreateUserTest extends TestCase
             'first_name' => 'Kaveesha',
             'last_name' => 'Sashen',
             'email' => 'sanaakaveesha@gmail.com',
-            'password' => Hash::make('Kaveesha123'),
+            'password' => 'Kaveesha123',
         ];
         $response = $this->post('/api/users/user-signup', $user);
         $response->assertStatus(200);
@@ -35,11 +35,13 @@ final class CreateUserTest extends TestCase
             'status' => Response::HTTP_OK,
             'message' => 'User created successfully',
         ]);
-        $this->assertDatabaseHas('users', [
+        $this->assertDatabaseHas('users',
+            [
             'first_name' => 'Kaveesha',
             'last_name' => 'Sashen',
             'email' => 'sanaakaveesha@gmail.com',
-            ]);
+            ]
+        );
 
     }
 
