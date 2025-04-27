@@ -11,14 +11,12 @@ class UserSignInAction
     public function __invoke($request): array
     {
         $user = User::where('email', $request['email'])->first();
-
         if (!$user) {
             return [
                 'status' => Response::HTTP_UNAUTHORIZED,
                 'message' => 'Invalid email address',
             ];
         }
-
         if ($this->isUserAuthenticated($user, $request)) {
             $token = $user->createToken('auth_token', ['server:admin'] )->plainTextToken;
             return [
@@ -27,13 +25,11 @@ class UserSignInAction
                 'token' => $token,
             ];
         }
-
         return [
             'status' => Response::HTTP_UNAUTHORIZED,
             'message' => 'Invalid password',
         ];
     }
-
     private function isUserAuthenticated($user, $request): bool
     {
         return $request['email'] === $user->email && Hash::check($request['password'], $user->password);

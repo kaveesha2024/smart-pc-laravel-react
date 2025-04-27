@@ -16,7 +16,7 @@ class UserSignInTest extends TestCase
             'email' => $userDetails['email'],
             'password' => 'Kaveesha123',
         ];
-        $response = $this->post('/api/users/user-signin', $user );
+        $response = $this->post('/api/users/user-signin', $user);
 
         $response->assertStatus(200);
         $response->assertJsonStructure([
