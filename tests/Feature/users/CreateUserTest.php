@@ -42,7 +42,5 @@ final class CreateUserTest extends TestCase
             'email' => 'sanaakaveesha@gmail.com',
             ]
         );
-
     }
-
 }
