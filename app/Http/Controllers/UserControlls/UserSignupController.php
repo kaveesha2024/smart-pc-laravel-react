@@ -4,7 +4,7 @@ namespace App\Http\Controllers\UserControlls;
 
 use App\Actions\users\CreateUser\CreateUserAction;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\user\CreateUserRequest;
 use Illuminate\Http\JsonResponse;
 
 class UserSignupController extends Controller

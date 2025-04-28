@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\user;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rules\Password;
-use mysql_xdevapi\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
-class CreateUserRequest extends FormRequest
+class UserSignInRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,21 +26,20 @@ class CreateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => 'required|string|min:3|max:255',
-            'last_name' => 'required|string',
-            'email' => 'required|email|max:255|unique:users,email',
-            'password' => ['required', Password::min(8)->mixedCase()->numbers()->uncompromised()],
+            'email' => 'required|email|max:255',
+            'password' => 'required|string|min:8'
         ];
     }
 
     public function failedValidation(Validator $validator)
     {
         $response = response()->json([
-            'status' => Response::HTTP_UNPROCESSABLE_ENTITY,
+            'status' => Response::HTTP_UNAUTHORIZED,
             'errors' => $validator->errors(),
         ]);
 
         throw new HttpResponseException($response);
 
     }
+
 }
