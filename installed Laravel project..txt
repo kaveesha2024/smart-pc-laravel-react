@@ -8,10 +8,8 @@ delete blade engine.
 
 End point
 finished the user signup method.
-have to finish failed validation test.
 
 * User Sign in  *
 
 End point
 finished the user sign in method.
-have to finish failed validation test.
