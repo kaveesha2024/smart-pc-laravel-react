@@ -2,7 +2,10 @@ import React from "react";
 import { Route, Routes } from "react-router";
 import App from "../../App.tsx";
 import SignUp from "../../components/user/signUp/SignUp.tsx";
+import axios from "axios";
 
+axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
+axios.defaults.withCredentials = true;
 const WebRoutes: React.FC = () => {
     return (
         <div>

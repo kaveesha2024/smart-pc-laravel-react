@@ -22,19 +22,19 @@ const SignUpForm: React.FC<ISignUpForm> = ({
                 </h1>
                 <form action="" onSubmit={handleSubmit}>
                     <InputField
-                        inputName="firstName"
+                        inputName="first_name"
                         type="text"
                         label="Enter Your First Name"
                         placeholder="First Name"
-                        errorMessage={err.firstName}
+                        errorMessage={err.first_name}
                         onchange={handleInputData}
                     />
                     <InputField
-                        inputName="lastName"
+                        inputName="last_name"
                         type="text"
                         label="Enter Your Last Name"
                         placeholder="Last Name"
-                        errorMessage={err.lastName}
+                        errorMessage={err.last_name}
                         onchange={handleInputData}
                     />
                     <InputField

@@ -1,18 +1,19 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import SignUpForm from "./SignUpForm.tsx";
 import { IInputData } from "../../../utility/types/userFormtypes/UserForms.ts";
+import axios from "axios";
 
 const SignUp: React.FC = () => {
     const [inputData, setInputData] = useState<IInputData>({
-        firstName: "",
-        lastName: "",
+        first_name: "",
+        last_name: "",
         email: "",
         password: "",
         confirmPassword: "",
     });
     const [err, setErr] = useState<IInputData>({
-        firstName: "",
-        lastName: "",
+        first_name: "",
+        last_name: "",
         email: "",
         password: "",
         confirmPassword: "",
@@ -29,19 +30,19 @@ const SignUp: React.FC = () => {
         });
     };
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (!inputData.firstName) {
+        if (!inputData.first_name) {
             setErr({
                 ...err,
-                firstName: "First Name is required",
+                first_name: "First Name is required",
             });
             return;
         }
-        if (!inputData.lastName) {
+        if (!inputData.last_name) {
             setErr({
                 ...err,
-                lastName: "Last Name is required",
+                last_name: "Last Name is required",
             });
             return;
         }
@@ -67,7 +68,13 @@ const SignUp: React.FC = () => {
             return;
         }
 
-        console.log(inputData);
+        try {
+            const response = await axios.post('/users/user-signup', inputData )
+            console.log(response.data);
+        }
+        catch (error) {
+            console.log(error);
+        }
     };
 
     return (
