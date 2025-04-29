@@ -7,6 +7,7 @@ const InputField: React.FC<IInputField> = ({
     placeholder,
     errorMessage,
     onchange,
+    inputData
 }) => {
     return (
         <div className="mb-4 flex flex-col gap-2 ">
@@ -24,6 +25,7 @@ const InputField: React.FC<IInputField> = ({
                 name={inputName}
                 placeholder={placeholder}
                 onChange={onchange}
+                value={inputData}
             />
             <span className="text-red-500 text-[13px]">{errorMessage}</span>
         </div>

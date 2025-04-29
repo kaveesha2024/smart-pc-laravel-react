@@ -1,4 +1,4 @@
-import InputField from "./InputField.tsx";
+import InputField from "../commonComponents/InputField.tsx";
 import { Button } from "@mui/material";
 import { ISignUpForm } from "../../../utility/types/userFormtypes/UserForms.ts";
 import React from "react";
@@ -7,6 +7,7 @@ const SignUpForm: React.FC<ISignUpForm> = ({
     err,
     handleInputData,
     handleSubmit,
+    inputData,
 }) => {
     return (
         <div className=" h-screen w-full flex justify-center items-center">
@@ -28,6 +29,7 @@ const SignUpForm: React.FC<ISignUpForm> = ({
                         placeholder="First Name"
                         errorMessage={err.first_name}
                         onchange={handleInputData}
+                        inputData={inputData.first_name}
                     />
                     <InputField
                         inputName="last_name"
@@ -36,6 +38,7 @@ const SignUpForm: React.FC<ISignUpForm> = ({
                         placeholder="Last Name"
                         errorMessage={err.last_name}
                         onchange={handleInputData}
+                        inputData={inputData.last_name}
                     />
                     <InputField
                         inputName="email"
@@ -44,6 +47,7 @@ const SignUpForm: React.FC<ISignUpForm> = ({
                         placeholder="example@123.com"
                         errorMessage={err.email}
                         onchange={handleInputData}
+                        inputData={inputData.email}
                     />
                     <InputField
                         inputName="password"
@@ -52,6 +56,7 @@ const SignUpForm: React.FC<ISignUpForm> = ({
                         placeholder="password"
                         errorMessage={err.password}
                         onchange={handleInputData}
+                        inputData={inputData.password}
                     />
                     <InputField
                         inputName="confirmPassword"
@@ -60,6 +65,7 @@ const SignUpForm: React.FC<ISignUpForm> = ({
                         placeholder="Re-type Password"
                         errorMessage={err.confirmPassword}
                         onchange={handleInputData}
+                        inputData={inputData.confirmPassword}
                     />
                     <Button type="submit" className="bg-blue-500 w-full">
                         Submit
