@@ -66,6 +66,7 @@ const SignUp: React.FC = () => {
             });
             return;
         }
+
         console.log(inputData);
     };
 

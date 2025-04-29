@@ -1,6 +1,7 @@
 import InputField from "./InputField.tsx";
 import { Button } from "@mui/material";
 import { ISignUpForm } from "../../../utility/types/userFormtypes/UserForms.ts";
+import React from "react";
 
 const SignUpForm: React.FC<ISignUpForm> = ({
     err,
@@ -12,7 +13,6 @@ const SignUpForm: React.FC<ISignUpForm> = ({
             <div
                 className=" w-[40%] p-10 "
                 style={{
-                    // border: '1px solid #000',
                     borderRadius: "10px",
                     boxShadow: "0 0 7px #000",
                 }}
