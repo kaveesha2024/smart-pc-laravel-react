@@ -8,7 +8,7 @@ const InputField: React.FC<IInputField> = ({
     placeholder,
     errorMessage,
     onchange,
-    inputData
+    inputData,
 }) => {
     return (
         <div className="mb-4 flex flex-col gap-2 ">

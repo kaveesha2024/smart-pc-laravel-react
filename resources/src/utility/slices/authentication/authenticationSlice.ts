@@ -1,33 +1,35 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import userSignInApi from "../../api/UserSignIn.ts";
-import { IInitialState, UserSignInPayload } from "../../types/authenticationSlice/Authentication.ts";
-
+import {
+    IInitialState,
+    UserSignInPayload,
+} from "../../types/authenticationSlice/Authentication.ts";
 
 const initialState: IInitialState = {
     isLoading: false,
-        token: '',
-        firstName: '',
-        lastName: '',
-        userId: '',
-        email: '',
-        errorStatus: {
+    token: "",
+    firstName: "",
+    lastName: "",
+    userId: "",
+    email: "",
+    errorStatus: {
         email: "",
         password: "",
-    }
-}
+    },
+};
 
 const authenticationSlice = createSlice({
     name: "AuthenticationSlice",
     initialState,
     reducers: {},
-    extraReducers: builder => {
-        builder.addCase(userSignInApi.pending,
-            (state) => {
-                state.isLoading = true
-            });
-        builder.addCase(userSignInApi.fulfilled,
+    extraReducers: (builder) => {
+        builder.addCase(userSignInApi.pending, (state) => {
+            state.isLoading = true;
+        });
+        builder.addCase(
+            userSignInApi.fulfilled,
             (state, action: PayloadAction<UserSignInPayload>) => {
-            const payload = action.payload
+                const payload = action.payload;
                 if (payload.status === 401) {
                     if (payload.message) {
                         if (payload.message === "Invalid email address") {
@@ -35,7 +37,7 @@ const authenticationSlice = createSlice({
                             return;
                         }
                         if (payload.message === "Invalid password") {
-                            state.errorStatus.email = ''
+                            state.errorStatus.email = "";
                             state.errorStatus.password = payload.message;
                             return;
                         }
@@ -47,25 +49,26 @@ const authenticationSlice = createSlice({
                             return;
                         }
                         if (payload.errors.password) {
-                            state.errorStatus.password = payload.errors.password[0];
+                            state.errorStatus.password =
+                                payload.errors.password[0];
                             return;
                         }
                     }
                 }
-                state.errorStatus.email = ''
-                state.errorStatus.password = ''
-                state.token = payload.token || ''
-                state.email = payload.user?.email || ''
-                state.firstName = payload.user?.first_name|| ''
-                state.lastName = payload.user?.last_name|| ''
-                state.userId = payload.user?.id|| ''
-                state.isLoading = false
-            })
-        builder.addCase(userSignInApi.rejected,
-            (state, action) => {
-                console.log(action.payload);
-                state.isLoading = false
-            })
-    }
+                state.errorStatus.email = "";
+                state.errorStatus.password = "";
+                state.token = payload.token || "";
+                state.email = payload.user?.email || "";
+                state.firstName = payload.user?.first_name || "";
+                state.lastName = payload.user?.last_name || "";
+                state.userId = payload.user?.id || "";
+                state.isLoading = false;
+            },
+        );
+        builder.addCase(userSignInApi.rejected, (state, action) => {
+            console.log(action.payload);
+            state.isLoading = false;
+        });
+    },
 });
 export default authenticationSlice.reducer;

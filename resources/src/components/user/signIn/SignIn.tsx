@@ -5,12 +5,11 @@ import { useDispatch } from "react-redux";
 import { ISignIn } from "../../../utility/types/userFormtypes/UserForms.ts";
 import { dispatch } from "../../../store.ts";
 
-
-const SignIn:React.FC = () => {
+const SignIn: React.FC = () => {
     const dispatch: dispatch = useDispatch();
     const [inputData, setInputData] = useState<ISignIn>({
-        'email' : "",
-        "password" : "",
+        email: "",
+        password: "",
     });
     const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;

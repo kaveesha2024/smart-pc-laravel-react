@@ -69,7 +69,10 @@ const SignUp: React.FC = () => {
         }
 
         try {
-            const response = await axios.post("/api/users/user-signup", inputData);
+            const response = await axios.post(
+                "/api/users/user-signup",
+                inputData,
+            );
             if (response.data.status === 422) {
                 const { errors } = response.data;
                 Object.keys(errors).forEach((key) => {
@@ -78,8 +81,15 @@ const SignUp: React.FC = () => {
                         [key]: errors[key][0],
                     });
                 });
-            }else {
-                console.log(response);
+            } else {
+                setInputData({
+                    first_name: "",
+                    last_name: "",
+                    email: "",
+                    password: "",
+                    confirmPassword: "",
+                });
+                alert("User created successfully");
             }
         } catch (error) {
             console.log(error);
@@ -87,7 +97,7 @@ const SignUp: React.FC = () => {
     };
 
     return (
-        <div className='mt-1'>
+        <div className="mt-1">
             <SignUpForm
                 err={err}
                 handleInputData={handleInputData}

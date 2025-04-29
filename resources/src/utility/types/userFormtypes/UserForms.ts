@@ -27,7 +27,7 @@ export interface ISignIn {
     password: string;
 }
 export interface ISignInForm {
-    handleInput: (event: ChangeEvent<HTMLInputElement>) => void,
-    handleSubmit: (event: FormEvent<HTMLFormElement>) => void,
-    inputData: ISignIn
+    handleInput: (event: ChangeEvent<HTMLInputElement>) => void;
+    handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
+    inputData: ISignIn;
 }

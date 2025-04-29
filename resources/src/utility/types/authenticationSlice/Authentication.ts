@@ -1,14 +1,14 @@
 export interface IInitialState {
-    isLoading: boolean,
-    token: string,
-    firstName: string,
-    lastName: string,
-    userId: string,
-    email: string,
+    isLoading: boolean;
+    token: string;
+    firstName: string;
+    lastName: string;
+    userId: string;
+    email: string;
     errorStatus: {
-        email: string,
-        password: string,
-    }
+        email: string;
+        password: string;
+    };
 }
 export interface User {
     id: string;
