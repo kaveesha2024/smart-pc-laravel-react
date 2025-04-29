@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import SignInForm from "./SignInForm.tsx";
+import userSignInApi from "../../../utility/api/UserSignIn.ts";
+import { useDispatch } from "react-redux";
 
 interface ISignIn {
     email: string;
     password: string;
 }
 const SignIn:React.FC = () => {
+    const dispatch = useDispatch();
     const [inputData, setInputData] = useState<ISignIn>({
         'email' : "",
         "password" : "",
@@ -41,6 +44,9 @@ const SignIn:React.FC = () => {
             });
             return;
         }
+
+        dispatch(userSignInApi(inputData));
+
     };
     return (
         <div>

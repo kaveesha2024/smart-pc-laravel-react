@@ -69,7 +69,7 @@ const SignUp: React.FC = () => {
         }
 
         try {
-            const response = await axios.post("/users/user-signup", inputData);
+            const response = await axios.post("/api/users/user-signup", inputData);
             if (response.data.status === 422) {
                 const { errors } = response.data;
                 Object.keys(errors).forEach((key) => {
@@ -78,15 +78,8 @@ const SignUp: React.FC = () => {
                         [key]: errors[key][0],
                     });
                 });
-            } else {
-                setInputData({
-                    ...inputData,
-                    first_name: "",
-                    last_name: "",
-                    email: "",
-                    password: "",
-                    confirmPassword: "",
-                });
+            }else {
+                console.log(response);
             }
         } catch (error) {
             console.log(error);

@@ -26,7 +26,7 @@ const SignInForm:React.FC = ({ handleInput, handleSubmit, errorStatus }) => {
                     />
                     <InputField
                         inputName="password"
-                        type="text"
+                        type="password"
                         label="Enter Your Password"
                         placeholder="Password"
                         errorMessage={errorStatus.password}
