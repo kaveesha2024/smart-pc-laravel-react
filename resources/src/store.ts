@@ -20,4 +20,6 @@ export const store = configureStore({
         serializableCheck: false
     }),
 });
+export type dispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
 export const persistor = persistStore(store)

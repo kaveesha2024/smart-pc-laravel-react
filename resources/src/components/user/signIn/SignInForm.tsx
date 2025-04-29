@@ -1,8 +1,13 @@
-import React from "react";
 import InputField from "../commonComponents/InputField.tsx";
 import { Button } from "@mui/material";
+import { useSelector } from "react-redux";
+import {  ISignInForm } from "../../../utility/types/userFormtypes/UserForms.ts";
+import { RootState } from "../../../store.ts";
+import React from "react";
 
-const SignInForm:React.FC = ({ handleInput, handleSubmit, errorStatus }) => {
+
+const SignInForm:React.FC <ISignInForm> = ({ handleInput, handleSubmit, inputData }) => {
+    const errorStatus = useSelector((state: RootState)  => state.authentication.errorStatus);
     return (
         <div className=" h-screen w-full flex justify-center items-center">
             <div
@@ -23,6 +28,7 @@ const SignInForm:React.FC = ({ handleInput, handleSubmit, errorStatus }) => {
                         placeholder="Email"
                         errorMessage={errorStatus.email}
                         onchange={handleInput}
+                        inputData={inputData.email}
                     />
                     <InputField
                         inputName="password"
@@ -31,6 +37,7 @@ const SignInForm:React.FC = ({ handleInput, handleSubmit, errorStatus }) => {
                         placeholder="Password"
                         errorMessage={errorStatus.password}
                         onchange={handleInput}
+                        inputData={inputData.password}
                     />
                     <Button type="submit" className="bg-blue-500 w-full">
                         Submit

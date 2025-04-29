@@ -23,6 +23,7 @@ class UserSignInAction
                 'status' => Response::HTTP_OK,
                 'message' => 'User logged in successfully',
                 'token' => $token,
+                'user' => $user,
             ];
         }
         return [

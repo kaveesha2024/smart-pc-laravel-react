@@ -22,3 +22,12 @@ export interface ISignUpForm {
     handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
     inputData: IInputData;
 }
+export interface ISignIn {
+    email: string;
+    password: string;
+}
+export interface ISignInForm {
+    handleInput: (event: ChangeEvent<HTMLInputElement>) => void,
+    handleSubmit: (event: FormEvent<HTMLFormElement>) => void,
+    inputData: ISignIn
+}
