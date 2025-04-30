@@ -16,10 +16,9 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        Log::info(request()->user()->role);
         if ($request->user()->role === 'admin') {
             return $next($request);
         }
-        return response()->json(['message' => 'You are not admin', 'status' => Response::HTTP_UNAUTHORIZED], );
+        return response()->json(['message' => 'you are not authorized to access this page', 'status' => Response::HTTP_UNAUTHORIZED], );
     }
 }
