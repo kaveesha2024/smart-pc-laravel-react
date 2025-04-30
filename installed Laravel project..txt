@@ -13,3 +13,6 @@ finished the user signup method.
 
 End point
 finished the user sign in method.
+
+End point
+products

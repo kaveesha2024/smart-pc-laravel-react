@@ -13,7 +13,7 @@ const userSignInApi: AsyncThunk<any, any, any> = createAsyncThunk(
             );
             return response.data;
         } catch (error) {
-            console.log(error);
+            console.log();
         }
     },
 );
