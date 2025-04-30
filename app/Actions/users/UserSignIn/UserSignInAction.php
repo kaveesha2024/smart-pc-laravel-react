@@ -18,7 +18,7 @@ class UserSignInAction
             ];
         }
         if ($this->isUserAuthenticated($user, $request)) {
-            $token = $user->createToken('auth_token', ['server:admin'] )->plainTextToken;
+            $token = $user->createToken('auth_token', ['view-users'] )->plainTextToken;
             return [
                 'status' => Response::HTTP_OK,
                 'message' => 'User logged in successfully',
