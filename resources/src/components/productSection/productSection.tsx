@@ -6,12 +6,13 @@ interface IProductSection {
         name: string,
         description: string,
         image: string,
+        category: string,
     }>
 }
-const ProductSection: React.FC <IProductSection> = ({ product }) => {
+const ProductSection: React.FC <IProductSection> = ({ product, category }) => {
     return (
         <div className="p-6 bg-gray-100 min-h-screen">
-            <h2 className="text-2xl font-bold mb-6 text-center">Laptop Collection</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center">{category}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {product.map((product, index) => (
                     <div key={index} className="bg-white shadow-md rounded-2xl p-4 hover:shadow-lg transition">

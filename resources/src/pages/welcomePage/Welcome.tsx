@@ -1,6 +1,7 @@
 import React from "react";
 import HeroSection from "../../components/hero/HeroSection.tsx";
 import ProductSection from "../../components/productSection/productSection.tsx";
+import Footer from "../../components/footer/Footer.tsx";
 
 const Welcome:React.FC = () => {
     const laptops = [
@@ -41,8 +42,9 @@ const Welcome:React.FC = () => {
     return (
         <div>
             <HeroSection />
-            <ProductSection product={laptops} />
-            <ProductSection product={mobiles}  />
+            <ProductSection product={laptops} category="Laptop collection" />
+            <ProductSection product={mobiles} category='Mobile collection' />
+            <Footer />
         </div>
     );
 };
