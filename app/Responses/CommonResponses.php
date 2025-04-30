@@ -21,4 +21,20 @@ class CommonResponses
             'message' => 'Invalid password',
         ];
     }
+
+    public function userNotCreated(): array
+    {
+        return [
+            'status' => Response::HTTP_INTERNAL_SERVER_ERROR,
+            'message' => 'User not created',
+        ];
+    }
+
+    public function userCreatedSuccessfully(): array
+    {
+        return [
+            'status' => Response::HTTP_OK,
+            'message' => 'User created successfully',
+        ];
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Actions\users\CreateUser;
 
 use App\Models\User;
+use App\Responses\CommonResponses;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -19,15 +20,9 @@ class CreateUserAction
         ]);
 
         if (!$response) {
-            return [
-                'status' => Response::HTTP_INTERNAL_SERVER_ERROR,
-                'message' => 'User not created',
-            ];
+            return (new CommonResponses)->userNotCreated();
         }
 
-        return [
-            'status' => Response::HTTP_OK,
-            'message' => 'User created successfully',
-        ];
+        return (new CommonResponses)->userCreatedSuccessfully();
     }
 }
