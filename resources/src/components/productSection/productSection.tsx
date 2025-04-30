@@ -6,8 +6,8 @@ interface IProductSection {
         name: string,
         description: string,
         image: string,
-        category: string,
     }>
+    category: string,
 }
 const ProductSection: React.FC <IProductSection> = ({ product, category }) => {
     return (
