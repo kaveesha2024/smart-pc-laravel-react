@@ -50,6 +50,7 @@ class GetAllUsersTest extends TestCase
             'password' => bcrypt('Kaveesha123'),
             'role' => 'admin'
         ]);
+        User::factory()->count(20)->create();
         $response = $this->post('/api/users/user-signin', [
             'email' => $user->email,
             'password' => 'Kaveesha123',
@@ -67,6 +68,17 @@ class GetAllUsersTest extends TestCase
             'Authorization' => 'Bearer '.$token,
         ])->get('/api/users');
         $res->assertStatus(200);
-        $res->assertJson([]);
+        $res->assertJsonStructure([[
+            'id',
+            'first_name',
+            "last_name",
+            "role" ,
+            "email" ,
+            "email_verified_at" ,
+            "password" ,
+            "remember_token",
+            "created_at" ,
+            "updated_at" ,
+        ]]);
     }
 }
