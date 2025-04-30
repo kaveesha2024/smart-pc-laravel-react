@@ -12,7 +12,7 @@ const SignUpForm: React.FC<ISignUpForm> = ({
     return (
         <div className=" h-screen w-full flex justify-center items-center">
             <div
-                className=" w-[40%] p-10 "
+                className=" w-[40%] p-10 max-sm:w-[95%] sm:w-[95%]"
                 style={{
                     borderRadius: "10px",
                     boxShadow: "0 0 7px #000",

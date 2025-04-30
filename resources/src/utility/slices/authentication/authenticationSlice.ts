@@ -33,6 +33,7 @@ const authenticationSlice = createSlice({
                 if (payload.status === 401) {
                     if (payload.message) {
                         if (payload.message === "Invalid email address") {
+                            state.errorStatus.password = "";
                             state.errorStatus.email = payload.message;
                             return;
                         }

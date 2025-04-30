@@ -1,5 +1,5 @@
 import { AsyncThunk, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { ISignIn } from "../types/userFormtypes/UserForms.ts";
 
 const userSignInApi: AsyncThunk<any, any, any> = createAsyncThunk(
@@ -7,7 +7,7 @@ const userSignInApi: AsyncThunk<any, any, any> = createAsyncThunk(
     async (inputData: ISignIn) => {
         try {
             await axios.get("/sanctum/csrf-cookie");
-            const response = await axios.post(
+            const response: AxiosResponse<object> = await axios.post(
                 "/api/users/user-signin",
                 inputData,
             );

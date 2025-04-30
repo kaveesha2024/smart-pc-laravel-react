@@ -13,7 +13,7 @@ class UserSignInAction
     {
         $user = User::where('email', $request['email'])->first();
         if (!$user) {
-            return [(new CommonResponses)->invalidEmailAddress()];
+            return (new CommonResponses)->invalidEmailAddress();
         }
         if ($this->isUserAuthenticated($user, $request)) {
             $token = $user->createToken('auth_token')->plainTextToken;
@@ -24,7 +24,7 @@ class UserSignInAction
                 'user' => $user,
             ];
         }
-        return [(new CommonResponses)->invalidPassword()];
+        return (new CommonResponses)->invalidPassword();
     }
     private function isUserAuthenticated($user, $request): bool
     {
