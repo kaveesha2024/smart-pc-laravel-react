@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent } from "react";
 
 export interface IInputData {
     first_name: string;
@@ -19,7 +19,7 @@ export interface IInputField {
 export interface ISignUpForm {
     err: IInputData;
     handleInputData: (event: ChangeEvent<HTMLInputElement>) => void;
-    handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
+    handleSubmit: () => void;
     inputData: IInputData;
 }
 export interface ISignIn {

@@ -2,25 +2,16 @@ import { useSelector } from "react-redux";
 import { ISignInForm } from "../../utility/types/userFormtypes/UserForms.ts";
 import { RootState } from "../../store.ts";
 import React from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 
 const SignInForm: React.FC<ISignInForm> = ({
-                                               handleInput,
-                                               handleSubmit,
-                                               inputData,
-                                           }) => {
-    const navigate = useNavigate();
+    handleInput,
+    handleSubmit,
+    inputData,
+}) => {
     const errorStatus = useSelector(
         (state: RootState) => state.authentication.errorStatus,
     );
-    const isAuth = useSelector(
-        (state: RootState) => state.authentication.isAuthenticated,
-    );
-
-    if (isAuth) {
-        navigate('/');
-    }
-
     return (
         <div className='w-full h-screen flex flex-col lg:flex-row bg-[url("/login.jpg")] bg-center bg-cover bg-no-repeat'>
             <div className="hidden lg:block w-1/2 h-full"></div>

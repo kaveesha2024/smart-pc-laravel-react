@@ -1,7 +1,8 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import SignUpForm from "./SignUpForm.tsx";
 import { IInputData } from "../../utility/types/userFormtypes/UserForms.ts";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const SignUp: React.FC = () => {
     const [inputData, setInputData] = useState<IInputData>({
@@ -30,8 +31,7 @@ const SignUp: React.FC = () => {
         });
     };
 
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const handleSubmit = async () => {
         if (!inputData.first_name) {
             setErr({
                 ...err,
@@ -69,10 +69,12 @@ const SignUp: React.FC = () => {
         }
 
         try {
+            const signupToast = toast.loading('Loading...');
             const response = await axios.post(
                 "/api/users/user-signup",
                 inputData,
             );
+            toast.dismiss(signupToast);
             if (response.data.status === 422) {
                 const { errors } = response.data;
                 Object.keys(errors).forEach((key) => {
@@ -89,15 +91,15 @@ const SignUp: React.FC = () => {
                     password: "",
                     confirmPassword: "",
                 });
-                alert("User created successfully");
+                toast.success('Signed up successfully');
             }
         } catch (error) {
             console.log(error);
         }
     };
-
+    console.log(inputData);
     return (
-        <div className="mt-1">
+        <div>
             <SignUpForm
                 err={err}
                 handleInputData={handleInputData}
