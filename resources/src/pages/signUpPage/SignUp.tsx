@@ -100,7 +100,6 @@ const SignUp: React.FC = () => {
             console.log(error);
         }
     };
-    console.log(inputData);
     return (
         <div>
             <SignUpForm
