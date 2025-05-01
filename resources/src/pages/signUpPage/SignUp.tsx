@@ -3,8 +3,10 @@ import SignUpForm from "./SignUpForm.tsx";
 import { IInputData } from "../../utility/types/userFormtypes/UserForms.ts";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 const SignUp: React.FC = () => {
+    const navigate = useNavigate();
     const [inputData, setInputData] = useState<IInputData>({
         first_name: "",
         last_name: "",
@@ -92,6 +94,7 @@ const SignUp: React.FC = () => {
                     confirmPassword: "",
                 });
                 toast.success('Signed up successfully');
+                navigate('/user/signin');
             }
         } catch (error) {
             console.log(error);
