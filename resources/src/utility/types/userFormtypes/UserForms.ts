@@ -28,6 +28,6 @@ export interface ISignIn {
 }
 export interface ISignInForm {
     handleInput: (event: ChangeEvent<HTMLInputElement>) => void;
-    handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
+    handleSubmit: () => void;
     inputData: ISignIn;
 }

@@ -1,4 +1,5 @@
 export interface IInitialState {
+    isAuthenticated: boolean;
     isLoading: boolean;
     token: string;
     firstName: string;

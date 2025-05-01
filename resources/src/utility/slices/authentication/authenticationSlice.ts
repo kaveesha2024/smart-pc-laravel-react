@@ -4,9 +4,10 @@ import {
     IInitialState,
     UserSignInPayload,
 } from "../../types/authenticationSlice/Authentication.ts";
-
+import toast from "react-hot-toast";
 const initialState: IInitialState = {
     isLoading: false,
+    isAuthenticated: false,
     token: "",
     firstName: "",
     lastName: "",
@@ -56,6 +57,7 @@ const authenticationSlice = createSlice({
                         }
                     }
                 }
+                toast.success('Logged in successfully');
                 state.errorStatus.email = "";
                 state.errorStatus.password = "";
                 state.token = payload.token || "";
@@ -64,10 +66,11 @@ const authenticationSlice = createSlice({
                 state.lastName = payload.user?.last_name || "";
                 state.userId = payload.user?.id || "";
                 state.isLoading = false;
+                state.isAuthenticated = true;
             },
         );
-        builder.addCase(userSignInApi.rejected, (state, action) => {
-            console.log(action.payload);
+        builder.addCase(userSignInApi.rejected, (state) => {
+            toast.error('error Occurred');
             state.isLoading = false;
         });
     },
