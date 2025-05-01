@@ -84,8 +84,6 @@ const SignUpForm: React.FC<ISignUpForm> = ({
                             </div>
                         </div>
                     </div>
-
-                    {/* Right Image Section - hidden on small screens */}
                     <div className='hidden md:block md:w-1/2 bg-[url("/signup.jpg")] bg-cover bg-center'></div>
                 </div>
             </div>

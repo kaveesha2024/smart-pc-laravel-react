@@ -57,12 +57,13 @@ const authenticationSlice = createSlice({
                         }
                     }
                 }
-                toast.success('Logged in successfully');
+
                 state.errorStatus.email = "";
                 state.errorStatus.password = "";
                 state.token = payload.token || "";
                 state.email = payload.user?.email || "";
                 state.firstName = payload.user?.first_name || "";
+                toast.success(`welcome ${state.firstName}`);
                 state.lastName = payload.user?.last_name || "";
                 state.userId = payload.user?.id || "";
                 state.isLoading = false;

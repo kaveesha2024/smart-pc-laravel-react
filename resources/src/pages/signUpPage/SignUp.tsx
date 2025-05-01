@@ -97,6 +97,7 @@ const SignUp: React.FC = () => {
                 navigate('/user/signin');
             }
         } catch (error) {
+            toast.error('Check your internet connection');
             console.log(error);
         }
     };

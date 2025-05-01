@@ -1,12 +1,18 @@
 import React, { ChangeEvent, useState } from "react";
 import SignInForm from "./SignInForm.tsx";
 import userSignInApi from "../../utility/api/UserSignIn.ts";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ISignIn } from "../../utility/types/userFormtypes/UserForms.ts";
-import { dispatch } from "../../store.ts";
+import { dispatch, RootState } from "../../store.ts";
+import { useNavigate } from "react-router";
 
 const SignIn: React.FC = () => {
     const dispatch: dispatch = useDispatch();
+    const navigate = useNavigate();
+    const isAuthenticated = useSelector((state: RootState) => state.authentication.isAuthenticated);
+    if (isAuthenticated) {
+        navigate('/')
+    }
     const [inputData, setInputData] = useState<ISignIn>({
         email: "",
         password: "",
