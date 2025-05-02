@@ -4,6 +4,7 @@ namespace App\Http\Controllers\ProductControlls;
 
 use App\Actions\products\AddProduct\AddProductAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\product\AddProductRequest;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -14,8 +15,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AddProductController extends Controller
 {
-    public function addProduct(AddProductAction $AddProductAction, Request $request): JsonResponse
+    public function addProduct(AddProductAction $AddProductAction, AddProductRequest $request): JsonResponse
     {
-        return response()->json($AddProductAction($request));
+        $validated = $request->validated();
+        return response()->json($AddProductAction($validated));
     }
 }

@@ -18,7 +18,7 @@ class Product extends Model
         'category',
         'brand',
         'quantity',
-        'status',
+            'status',
         "created_at",
         "updated_at",
     ];

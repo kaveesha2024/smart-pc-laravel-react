@@ -2,7 +2,13 @@
 
 namespace App\Http\Requests\product;
 
+use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpFoundation\Response;
 
 class AddProductRequest extends FormRequest
 {
@@ -11,18 +17,47 @@ class AddProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+//        $response = Auth::user();
+//        Log::info($response);
+        return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            //
+            'product_name' => 'required|string|min:2',
+            'description' => 'string:min:2|max:255',
+            'price' => 'required|decimal:0,2',
+            'image' => 'required',
+            'category' => 'required|in:laptop,mobile,desktop,accessories',
+            'brand' => 'string|Max:255',
+            'quantity' => 'required|integer',
+            'status' => 'required|in:in stock,out of stock',
+            'long_description' => 'max:1000',
+            'ram' => 'required|in:4GB,8GB,16GB,32GB,64GB',
+            'processor' => 'required|in:Intel,AMD',
+            'storage' => 'required|in:1TB,2TB,4TB,8TB',
+            'graphics' => 'required|in:Nvidia,AMD',
+            'storage_type' => 'required|in:SSD,HDD',
+            'display' => 'required|in:IPS,LED,LCD,OLED',
+            'color' => 'required|string|max:255',
+            'screen_size' => 'required|string|max:255',
+            'operating_system' => 'required|in:Windows,Linux,Mac OS',
+            'battery' => 'required|string|max:255',
         ];
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        $response = response()->json([
+            'status' => Response::HTTP_UNPROCESSABLE_ENTITY,
+            'errors' => $validator->errors(),
+        ]);
+        throw new HttpResponseException($response);
     }
 }
