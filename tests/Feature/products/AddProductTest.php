@@ -33,7 +33,6 @@ class AddProductTest extends TestCase
             'user'
         ]);
         $token = $response->json()['token'];
-
         $product = Product::factory()->make()->toArray();
         $productDescription = LaptopDescription::factory()->make()->toArray();
         $request = array_merge($product, $productDescription);
@@ -53,7 +52,7 @@ class AddProductTest extends TestCase
         $this->assertDatabaseHas('laptop_description', $productDescription);
     }
 
-    public function test_it_gets_a_add_response_if_a_user_try_to_add_a_product()
+    public function test_it_gets_a_bad_response_if_a_user_try_to_add_a_product()
     {
         $user = User::factory()->create([
             'password' => bcrypt('Kaveesha123'),
@@ -73,9 +72,11 @@ class AddProductTest extends TestCase
         $token = $response->json()['token'];
 
         $product = Product::factory()->make()->toArray();
+        $productDescription = LaptopDescription::factory()->make()->toArray();
+        $request = array_merge($product, $productDescription);
         $productResponse = $this->withHeaders([
             'Authorization' => 'Bearer '.$token,
-        ])->post('/api/products/add-product', $product);
+        ])->post('/api/products/add-product', $request);
         $productResponse->assertStatus(200);
         $productResponse->assertJsonStructure([
             'status',

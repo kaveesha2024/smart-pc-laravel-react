@@ -34,7 +34,6 @@ class AddProductAction
             'category' => $request['category'],
             'brand' => $request['brand'],
             'quantity' => $request['quantity'],
-            'status' => $request['status'],
         ]);
 
         if (!$response1) {

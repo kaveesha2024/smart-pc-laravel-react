@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
-class UserSignInTest extends TestCase
+final class UserSignInTest extends TestCase
 {
     use RefreshDatabase;
     public function test_it_gets_a_sanctum_token_if_user_login_successfully()
