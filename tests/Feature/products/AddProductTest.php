@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\products;
 
-use App\Models\Laptop_description;
 use App\Models\LaptopDescription;
 use App\Models\Product;
 use App\Models\User;
