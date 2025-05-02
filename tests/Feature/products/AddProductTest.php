@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\products;
 
+use App\Models\Laptop_description;
+use App\Models\LaptopDescription;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -33,9 +35,11 @@ class AddProductTest extends TestCase
         $token = $response->json()['token'];
 
         $product = Product::factory()->make()->toArray();
+        $productDescription = LaptopDescription::factory()->make()->toArray();
+        $request = array_merge($product, $productDescription);
         $productResponse = $this->withHeaders([
             'Authorization' => 'Bearer '.$token,
-        ])->post('/api/products/add-product', $product);
+        ])->post('/api/products/add-product', $request);
         $productResponse->assertStatus(200);
         $productResponse->assertJsonStructure([
             'status',
@@ -46,6 +50,7 @@ class AddProductTest extends TestCase
             'message' => 'product added successfully',
         ]);
         $this->assertDatabaseHas('products', $product);
+        $this->assertDatabaseHas('laptop_description', $productDescription);
     }
 
     public function test_it_gets_a_add_response_if_a_user_try_to_add_a_product()
