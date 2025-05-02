@@ -20,4 +20,4 @@ Route::middleware([
     'auth:sanctum',
     IsAdmin::class,
 ])->get('/users', [GetUsersController::class, 'getAllUsers']);
-Route::post('/products/add-product',[AddProductController::class, 'addProduct'] );
+Route::middleware('auth:sanctum')->post('/products/add-product',[AddProductController::class, 'addProduct'] );
