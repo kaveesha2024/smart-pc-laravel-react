@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -27,7 +28,8 @@ class AddProductController extends Controller
                 'message' => "You are not authorized to add product",
             ]);
         }
-        $response =  Product::create([
+
+        $response1 = DB::table('products')->insert([
             'product_name' => $request['product_name'],
             'description' => $request['description'],
             'image' => $request['image'],
@@ -37,10 +39,32 @@ class AddProductController extends Controller
             'quantity' => $request['quantity'],
             'status' => $request['status'],
         ]);
-        if (!$response) {
+
+        if (!$response1) {
             return response()->json([
                 'status' => Response::HTTP_INTERNAL_SERVER_ERROR,
                 'message' => 'Error occurred while adding product',
+            ]);
+        }
+        $productId = DB::getPdo()->lastInsertId();
+
+        $response2 = DB::table('laptop_description')->insert([
+            'product_id' => $productId,
+            'long_description' => $request['long_description'],
+            'ram' => $request['ram'],
+            'processor' => $request['processor'],
+            'storage' => $request['storage'],
+            'graphics' => $request['graphics'],
+            'storage_type' => $request['storage_type'],
+            'display' => $request['display'],
+            'color' => $request['color'],
+            'screen_size' => $request['screen_size'],
+            'operating_system' => $request['operating_system'],
+            'battery' => $request['battery'],
+        ]);
+        if (!$response2) {
+            return response()->json([
+                'status' => Response::HTTP_INTERNAL_SERVER_ERROR,
             ]);
         }
         return response()->json([

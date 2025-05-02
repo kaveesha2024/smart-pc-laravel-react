@@ -19,5 +19,7 @@ class Product extends Model
         'brand',
         'quantity',
         'status',
+        "created_at",
+        "updated_at",
     ];
 }

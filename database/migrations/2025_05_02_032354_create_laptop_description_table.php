@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('laptop_description', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
-            $table->longText('description');
+            $table->longText('long_description')->nullable();
             $table->string('ram');
             $table->string('processor');
             $table->string('storage');
