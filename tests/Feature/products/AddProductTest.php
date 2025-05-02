@@ -5,6 +5,7 @@ namespace Tests\Feature\products;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
 
@@ -45,5 +46,39 @@ class AddProductTest extends TestCase
             'message' => 'product added successfully',
         ]);
         $this->assertDatabaseHas('products', $product);
+    }
+
+    public function test_it_gets_a_add_response_if_a_user_try_to_add_a_product()
+    {
+        $user = User::factory()->create([
+            'password' => bcrypt('Kaveesha123'),
+        ]);
+        $response = $this->post('/api/users/user-signin', [
+            'email' => $user->email,
+            'password' => 'Kaveesha123',
+        ] );
+        $response->assertStatus(200);
+
+        $response->assertJsonStructure([
+            'status',
+            'message',
+            'token',
+            'user'
+        ]);
+        $token = $response->json()['token'];
+
+        $product = Product::factory()->make()->toArray();
+        $productResponse = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->post('/api/products/add-product', $product);
+        $productResponse->assertStatus(200);
+        $productResponse->assertJsonStructure([
+            'status',
+            'message',
+        ]);
+        $productResponse->assertSimilarJson([
+            'status' => Response::HTTP_UNAUTHORIZED,
+            'message' => 'You are not authorized to add product',
+        ]);
     }
 }
