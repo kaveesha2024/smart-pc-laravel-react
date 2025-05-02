@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
 
-class AddProductTest extends TestCase
+final class AddProductTest extends TestCase
 {
     use RefreshDatabase;
     public function test_it_gets_a_successful_response_if_product_added_successfully()

@@ -6,7 +6,7 @@ import authenticationSlice from "./utility/slices/authentication/authenticationS
 const persistConfig = {
     key: "root",
     storage,
-    whitelist: ["authentication"],
+    blacklist: ["authentication"],
 };
 const rootReducer = combineReducers({
     authentication: authenticationSlice,
