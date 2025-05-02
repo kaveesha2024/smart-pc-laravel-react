@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductControlls\AddProductController;
 use App\Http\Controllers\UserControlls\GetUsersController;
 use App\Http\Controllers\UserControlls\UserSignInController;
 use App\Http\Controllers\UserControlls\UserSignupController;
@@ -19,3 +20,4 @@ Route::middleware([
     'auth:sanctum',
     IsAdmin::class,
 ])->get('/users', [GetUsersController::class, 'getAllUsers']);
+Route::post('/products/add-product',[AddProductController::class, 'addProduct'] );
