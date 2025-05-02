@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('category');
             $table->string('brand')->nullable();
             $table->integer('quantity');
-            $table->string('status');
+            $table->string('status')->default('in stock');
             $table->timestamps();
         });
     }

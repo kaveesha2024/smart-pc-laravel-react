@@ -24,7 +24,6 @@ class ProductFactory extends Factory
             'category' => $this->faker->randomElement(['laptop', 'mobile', 'desktop', 'accessories']),
             'brand' => $this->faker->word(),
             'quantity' => $this->faker->numberBetween(1, 100),
-            'status' => $this->faker->randomElement(['in stock', 'out of stock']),
         ];
     }
 }

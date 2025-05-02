@@ -2,6 +2,8 @@
 
 namespace App\Actions\products\AddProduct;
 
+use App\Models\LaptopDescription;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +26,7 @@ class AddProductAction
             ];
         }
 
-        $response1 = DB::table('products')->insert([
+        $response1 = Product::create([
             'product_name' => $request['product_name'],
             'description' => $request['description'],
             'image' => $request['image'],
@@ -43,7 +45,7 @@ class AddProductAction
         }
         $productId = DB::getPdo()->lastInsertId();
 
-        $response2 = DB::table('laptop_description')->insert([
+        $response2 = LaptopDescription::create([
             'product_id' => $productId,
             'long_description' => $request['long_description'],
             'ram' => $request['ram'],
