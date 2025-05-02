@@ -86,4 +86,49 @@ class AddProductTest extends TestCase
             'message' => 'You are not authorized to add product',
         ]);
     }
+
+    public function test_it_gets_bad_errors_if_request_validations_are_failed()
+    {
+        $user = User::factory()->create([
+            'password' => bcrypt('Kaveesha123'),
+            'role' => 'admin'
+        ]);
+        $response = $this->post('/api/users/user-signin', [
+            'email' => $user->email,
+            'password' => 'Kaveesha123',
+        ] );
+        $response->assertStatus(200);
+
+        $response->assertJsonStructure([
+            'status',
+            'message',
+            'token',
+            'user'
+        ]);
+        $token = $response->json()['token'];
+
+        $product = Product::factory()->make([
+            'product_name' => 'a',
+            'description' => 'a',
+            'price' => 'a',
+        ])->toArray();
+        $productDescription = LaptopDescription::factory()->make()->toArray();
+        $request = array_merge($product, $productDescription);
+
+        $productResponse = $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->post('/api/products/add-product', $request);
+        $productResponse->assertStatus(200);
+        $productResponse->assertJsonStructure([
+            'status',
+            'errors',
+        ]);
+        $productResponse->assertSimilarJson([
+            'status' => Response::HTTP_UNPROCESSABLE_ENTITY,
+            "errors" => [
+                "product_name" => ["The product name field must be at least 2 characters."],
+                "price" => ["The price field must have 0-2 decimal places."]
+            ]
+        ]);
+    }
 }
