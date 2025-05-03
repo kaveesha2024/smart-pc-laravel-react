@@ -1,6 +1,6 @@
 import React from "react";
 import welcomeHero from "../../../public/welcome-hero.jpg";
-import NavigationBar from "../navigation/NavigationBar.tsx";
+import NavigationBar from "../navigation/main/NavigationBar.tsx";
 
 const HeroSection: React.FC = () => {
     return (
