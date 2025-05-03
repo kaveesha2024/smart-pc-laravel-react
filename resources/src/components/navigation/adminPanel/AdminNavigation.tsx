@@ -10,9 +10,8 @@ const AdminNavigation: React.FC = () => {
 
     return (
         <>
-            {/* Mobile Toggle Button */}
             <button
-                className="md:hidden fixed top-4 left-4 z-50 bg-white p-2 rounded shadow"
+                className="md:hidden fixed top-4 left-4 z-70 bg-white p-2 rounded shadow"
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <svg
@@ -25,9 +24,7 @@ const AdminNavigation: React.FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
-
-            {/* Sidebar */}
-            <div className={`fixed top-0 left-0 h-full z-40 transition-transform duration-300 ease-in-out
+            <div className={`fixed top-0 left-0 h-full z-60 transition-transform duration-300 ease-in-out
                 backdrop-blur-md text-[#14181B] shadow-2xl flex flex-col justify-between p-4
                 w-64 md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"} md:static md:flex`}>
                 <div>
@@ -48,7 +45,8 @@ const AdminNavigation: React.FC = () => {
                         <span className='font-semibold text-xl'>Welcome Admin</span>
                     </div>
                     <div className="w-full flex flex-col gap-2 justify-center items-start mt-5">
-                        <button className='adminNavigationBtn pt-4 border-t-1'>Total Users <span><AllUsersIcon /></span></button>
+                        <button className='adminNavigationBtn pt-4 border-t-1'>Dashboard <span><AllUsersIcon /></span></button>
+                        <button className='adminNavigationBtn'>Total Users <span><AllUsersIcon /></span></button>
                         <button className='adminNavigationBtn'>Total Products <span><TotalProductIcon /></span></button>
                         <button className='adminNavigationBtn'>Add Product <span><AddProductIcon /></span></button>
                         <button className='adminNavigationBtn'>Create User <span><CreateUserIcon /></span></button>

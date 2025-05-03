@@ -26,5 +26,5 @@
     transform: scaleX(1);
 }
 .adminNavigationBtn {
-    @apply text-xl hover:bg-[#0000002b] transition cursor-pointer flex justify-between items-center py-3 border-b-1 w-full text-start
+    @apply  hover:bg-[#0000002b] transition cursor-pointer flex justify-between items-center py-3 border-b-1 w-full text-start
 }
