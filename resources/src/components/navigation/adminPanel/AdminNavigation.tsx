@@ -4,10 +4,31 @@ import AddProductIcon from "./commonComponents/icon/AddProductIcon.tsx";
 import TotalProductIcon from "./commonComponents/icon/TotalProductIcon.tsx";
 import CreateUserIcon from "./commonComponents/icon/CreateUserIcon.tsx";
 import OrdersIcon from "./commonComponents/icon/OrdersIcon.tsx";
+import { useDispatch } from "react-redux";
+import { signOut } from "../../../utility/slices/authentication/authenticationSlice.ts";
+import { useNavigate } from "react-router";
+import Swal from 'sweetalert2'
 
 const AdminNavigation: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
+    const handleSignOut = () => {
+        Swal.fire({
+            title: "Sign out",
+            text: "Are you sure you want to sign out?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(signOut())
+                navigate("/");
+            }
+        });
+    }
     return (
         <>
             <button
@@ -54,7 +75,7 @@ const AdminNavigation: React.FC = () => {
                     </div>
                 </div>
                 <div className='hover:text-white transition'>
-                    <button className='font-semibold text-xl cursor-pointer flex justify-between py-3 border-b-1 border-t-1 w-full text-start'>
+                    <button onClick={handleSignOut} className='font-semibold text-xl cursor-pointer flex justify-between py-3 border-b-1 border-t-1 w-full text-start'>
                         Sign out <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" /></svg></span>
                     </button>
                 </div>

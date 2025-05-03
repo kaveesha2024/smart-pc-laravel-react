@@ -22,7 +22,19 @@ const initialState: IInitialState = {
 const authenticationSlice = createSlice({
     name: "AuthenticationSlice",
     initialState,
-    reducers: {},
+    reducers: {
+        signOut: (state) => {
+            state.isAuthenticated = false;
+            state.token = "";
+            state.firstName = "";
+            state.lastName = "";
+            state.userId = "";
+            state.email = "";
+            state.role = "";
+            state.errorStatus.email = "";
+            state.errorStatus.password = "";
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(userSignInApi.pending, (state) => {
             state.isLoading = true;
@@ -78,3 +90,4 @@ const authenticationSlice = createSlice({
     },
 });
 export default authenticationSlice.reducer;
+export const { signOut } = authenticationSlice.actions;
