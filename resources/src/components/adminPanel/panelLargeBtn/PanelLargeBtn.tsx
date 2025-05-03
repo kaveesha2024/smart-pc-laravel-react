@@ -1,10 +1,6 @@
 import React from "react";
+import { IPanelLargeBtn } from "../../../utility/types/adminPanel/AdminPanel.ts";
 
-interface IPanelLargeBtn {
-    btnName: string;
-    count: string;
-    Icon: React.FC;
-}
 const PanelLargeBtn: React.FC<IPanelLargeBtn> = ({ btnName, count, Icon }) => {
     return (
         <button className="backdrop-blur-sm shadow-2xl cursor-pointer flex justify-center items-center rounded-2xl w-[100%] sm:w-[45%] md:w-[45%] xl:w-[30%] h-[100px] sm:h-[120px] md:h-[140px] xl:h-[40%] p-2">

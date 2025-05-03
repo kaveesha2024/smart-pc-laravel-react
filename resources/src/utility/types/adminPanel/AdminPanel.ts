@@ -5,3 +5,8 @@ export interface IAdminNavBtn {
     btnName: string;
     Icon: React.FC;
 }
+export interface IPanelLargeBtn {
+    btnName: string;
+    count: string;
+    Icon: React.FC;
+}
