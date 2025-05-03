@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const StatusBar: React.FC = () => {
     return (
-        <div className="w-full flex justify-between px-15 items-center h-20 bg-[]  shadow-xl">
+        <div className="w-full flex justify-between px-15 items-center h-20 shadow-xl">
 
                 <Link to='/' className="text-2xl font-bold select-none">Smart PC</Link>
             <div>
