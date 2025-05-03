@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import { signOut } from "../../../utility/slices/authentication/authenticationSlice.ts";
 import { useNavigate } from "react-router";
 import Swal from 'sweetalert2'
+import AdminNavBtn from "./commonComponents/adminNavigationBtn/AdminNavBtn.tsx";
+import HomeIcon from "./commonComponents/icon/HomeIcon.tsx";
 
 const AdminNavigation: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -66,12 +68,12 @@ const AdminNavigation: React.FC = () => {
                         <span className='font-semibold text-xl'>Welcome Admin</span>
                     </div>
                     <div className="w-full flex flex-col gap-2 justify-center items-start mt-5">
-                        <button className='adminNavigationBtn pt-4 border-t-1'>Dashboard <span><AllUsersIcon /></span></button>
-                        <button className='adminNavigationBtn'>Total Users <span><AllUsersIcon /></span></button>
-                        <button className='adminNavigationBtn'>Total Products <span><TotalProductIcon /></span></button>
-                        <button className='adminNavigationBtn'>Add Product <span><AddProductIcon /></span></button>
-                        <button className='adminNavigationBtn'>Create User <span><CreateUserIcon /></span></button>
-                        <button className='adminNavigationBtn'>Orders <span><OrdersIcon /></span></button>
+                        <button onClick={()=>{navigate("/admin/panel")}} className='adminNavigationBtn pt-4 border-t-1'>Dashboard <span><HomeIcon /></span></button>
+                        <AdminNavBtn onclick={()=>{navigate('/')}} btnName="Total Users" Icon={AllUsersIcon} />
+                        <AdminNavBtn onclick={()=>{navigate('/')}} btnName="Total Products" Icon={TotalProductIcon} />
+                        <AdminNavBtn onclick={()=>{navigate('/')}} btnName="Add Product" Icon={AddProductIcon} />
+                        <AdminNavBtn onclick={()=>{navigate('/')}} btnName="Create User" Icon={CreateUserIcon} />
+                        <AdminNavBtn onclick={()=>{navigate('/')}} btnName="Orders" Icon={OrdersIcon} />
                     </div>
                 </div>
                 <div className='hover:text-white transition'>
