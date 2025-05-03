@@ -19,7 +19,6 @@ const initialState: IInitialState = {
         password: "",
     },
 };
-
 const authenticationSlice = createSlice({
     name: "AuthenticationSlice",
     initialState,

@@ -3,12 +3,18 @@ import LinkTag from "./commonComponents/LinkTag.tsx";
 import { Link, useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store.ts";
+import { IInitialState } from "../../utility/types/authenticationSlice/Authentication.ts";
+import IconBtn from "./commonComponents/IconBtn.tsx";
+import SettingIcon from "./commonComponents/SettingIcon.tsx";
+import UserIcon from "./commonComponents/UserIcon.tsx";
 
 const NavigationBar: React.FC = () => {
     const navigate = useNavigate();
-    const selector = useSelector((state: RootState) => state.authentication);
+    const selector: IInitialState = useSelector(
+        (state: RootState) => state.authentication,
+    );
     const [isOpen, setIsOpen] = useState(false);
-    const isAuthenticated = selector.isAuthenticated;
+    const role: string = selector.role;
     return (
         <div className="w-full absolute top-0 z-50">
             <div className="w-full h-[78px] flex items-center justify-between px-6 md:px-12 backdrop-blur-2xl shadow-2xl">
@@ -23,14 +29,22 @@ const NavigationBar: React.FC = () => {
                     <LinkTag uri="/" name="Accessories" />
                     <LinkTag uri="/" name="Mobiles" />
                 </div>
-                {isAuthenticated ? (
+
+                {role === "user" ? (
                     <div className="hidden md:block">
-                        <button
-                            onClick={() => navigate("/user/signin")}
-                            className="bg-[#FB9096] text-black cursor-pointer px-4 py-2 rounded-md font-semibold transition hover:bg-black hover:text-[#FB9096]"
-                        >
-                            Sign Out
-                        </button>
+                        <IconBtn
+                            onclick={() => {
+                                navigate("/user/profile");
+                            }}
+                            svg={<UserIcon />}
+                        />
+                    </div>
+                ) : role === "admin" ? (
+                    <div className="hidden md:block">
+                        <IconBtn
+                            onclick={() => navigate("/admin/panel")}
+                            svg={<SettingIcon />}
+                        />
                     </div>
                 ) : (
                     <div className="hidden md:block">
@@ -42,6 +56,7 @@ const NavigationBar: React.FC = () => {
                         </button>
                     </div>
                 )}
+
                 <div className="md:hidden">
                     <button
                         onClick={() => setIsOpen(!isOpen)}
@@ -51,6 +66,7 @@ const NavigationBar: React.FC = () => {
                     </button>
                 </div>
             </div>
+
             <div
                 className={`md:hidden overflow-hidden transform transition-all duration-500 ease-in-out ${
                     isOpen
@@ -58,21 +74,31 @@ const NavigationBar: React.FC = () => {
                         : "opacity-0 -translate-y-5 max-h-0"
                 }  backdrop-blur-sm`}
             >
-                <div className="flex flex-col items-center py-6 space-y-4">
+                <div className="flex flex-col items-start ml-5 py-6 space-y-4">
                     <LinkTag uri="/" name="Laptops" />
                     <LinkTag uri="/" name="Desktop" />
                     <LinkTag uri="/" name="Monitors" />
                     <LinkTag uri="/" name="Accessories" />
                     <LinkTag uri="/" name="Mobiles" />
-                    {isAuthenticated ? (
+                    {role === "user" ? (
                         <button
                             onClick={() => {
                                 setIsOpen(false);
-                                navigate("/user/signin");
+                                navigate("/user/profile");
                             }}
-                            className="bg-[#FB9096] text-black px-4 py-2 rounded-md font-semibold transition hover:bg-black hover:text-[#FB9096]"
+                            className="text-white font-semibold"
                         >
-                            Sign Out
+                            Profile
+                        </button>
+                    ) : role === "admin" ? (
+                        <button
+                            onClick={() => {
+                                setIsOpen(false);
+                                navigate("/admin/panel");
+                            }}
+                            className="text-white font-semibold"
+                        >
+                            Admin Panel
                         </button>
                     ) : (
                         <button
@@ -80,7 +106,7 @@ const NavigationBar: React.FC = () => {
                                 setIsOpen(false);
                                 navigate("/user/signin");
                             }}
-                            className="bg-[#FB9096] text-black px-4 py-2 rounded-md font-semibold transition hover:bg-black hover:text-[#FB9096]"
+                            className="text-white font-semibold"
                         >
                             Login
                         </button>
