@@ -17,6 +17,7 @@
     "@mui/styled-engine-sc": "^7.0.2",
     "@reduxjs/toolkit": "^2.7.0",
     "@tailwindcss/vite": "^4.1.4",
+    "aos": "^2.3.4",
     "axios": "^1.9.0",
     "pretier": "^0.0.1",
     "react": "^19.0.0",
