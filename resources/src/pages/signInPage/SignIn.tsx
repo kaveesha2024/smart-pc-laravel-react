@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import SignInForm from "./SignInForm.tsx";
 import userSignInApi from "../../utility/api/UserSignIn.ts";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,7 +24,7 @@ const SignIn: React.FC = () => {
         email: "",
         password: "",
     });
-    const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleInput = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>): void => {
         const { name, value } = event.target;
         setInputData({
             ...inputData,

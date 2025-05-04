@@ -1,15 +1,18 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import authenticationSlice from "./utility/slices/authentication/authenticationSlice.ts";
+import authenticationReducer from "./utility/slices/authentication/authenticationSlice.ts";
+import addProductReducer from "./utility/slices/addProduct/addProductSlice.ts";
 
 const persistConfig = {
     key: "root",
     storage,
     whitelist: ["authentication"],
+    blacklist: ["addProduct"],
 };
 const rootReducer = combineReducers({
-    authentication: authenticationSlice,
+    authentication: authenticationReducer,
+    addProduct: addProductReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
