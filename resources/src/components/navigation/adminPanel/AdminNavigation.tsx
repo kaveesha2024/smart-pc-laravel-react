@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import AllUsersIcon from "./commonComponents/icon/AllUsersIcon.tsx";
-import AddProductIcon from "./commonComponents/icon/AddProductIcon.tsx";
-import TotalProductIcon from "./commonComponents/icon/TotalProductIcon.tsx";
-import CreateUserIcon from "./commonComponents/icon/CreateUserIcon.tsx";
-import OrdersIcon from "./commonComponents/icon/OrdersIcon.tsx";
+import AllUsersIcon from "../../icon/AllUsersIcon.tsx";
+import AddProductIcon from "../../icon/AddProductIcon.tsx";
+import TotalProductIcon from "../../icon/TotalProductIcon.tsx";
+import CreateUserIcon from "../../icon/CreateUserIcon.tsx";
+import OrdersIcon from "../../icon/OrdersIcon.tsx";
 import { useDispatch } from "react-redux";
 import { signOut } from "../../../utility/slices/authentication/authenticationSlice.ts";
 import { useNavigate } from "react-router";
 import Swal from 'sweetalert2'
 import AdminNavBtn from "./commonComponents/adminNavigationBtn/AdminNavBtn.tsx";
-import HomeIcon from "./commonComponents/icon/HomeIcon.tsx";
+import HomeIcon from "../../icon/HomeIcon.tsx";
 
 const AdminNavigation: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -69,11 +69,11 @@ const AdminNavigation: React.FC = () => {
                     </div>
                     <div className="w-full flex flex-col gap-2 justify-center items-start mt-5">
                         <button onClick={()=>{navigate("/admin/panel")}} className='adminNavigationBtn pt-4 border-t-1'>Dashboard <span><HomeIcon /></span></button>
-                        <AdminNavBtn onclick={()=>{navigate('/')}} btnName="Total Users" Icon={AllUsersIcon} />
-                        <AdminNavBtn onclick={()=>{navigate('/')}} btnName="Total Products" Icon={TotalProductIcon} />
-                        <AdminNavBtn onclick={()=>{navigate('/')}} btnName="Add Product" Icon={AddProductIcon} />
-                        <AdminNavBtn onclick={()=>{navigate('/')}} btnName="Create User" Icon={CreateUserIcon} />
-                        <AdminNavBtn onclick={()=>{navigate('/')}} btnName="Orders" Icon={OrdersIcon} />
+                        <AdminNavBtn onclick={()=>{navigate('/admin/panel/total-users')}} btnName="Total Users" Icon={AllUsersIcon} /> {/*comp->user*/}
+                        <AdminNavBtn onclick={()=>{navigate('/admin/panel/total-products')}} btnName="Total Products" Icon={TotalProductIcon} />
+                        <AdminNavBtn onclick={()=>{navigate('/admin/panel/add-product')}} btnName="Add Product" Icon={AddProductIcon} />
+                        <AdminNavBtn onclick={()=>{navigate('/admin/panel/create-user')}} btnName="Create User" Icon={CreateUserIcon} /> {/*comp->user*/}
+                        <AdminNavBtn onclick={()=>{navigate('/admin/panel/orders')}} btnName="Orders" Icon={OrdersIcon} /> {/*comp->order*/}
                     </div>
                 </div>
                 <div className='hover:text-white transition'>

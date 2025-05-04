@@ -30,7 +30,7 @@ const WebRoutes: React.FC = () => {
                 <Route path="/user/signin" element={<SignIn />} />
                 <Route path="/" element={<Welcome />} />
                 <Route
-                    path="/admin/panel"
+                    path="/admin/panel/*"
                     element={
                         isAuth(isAuthenticated) &&
                         haveUserId(userId) &&

@@ -5,13 +5,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { ISignIn } from "../../utility/types/userFormtypes/UserForms.ts";
 import { dispatch, RootState } from "../../store.ts";
 import { NavigateFunction, useNavigate } from "react-router";
+import { isAdmin } from "../../components/commonValidationConditions/CommonValidationConditions.ts";
 
 const SignIn: React.FC = () => {
     const dispatch: dispatch = useDispatch();
     const navigate: NavigateFunction = useNavigate();
-    const isAuthenticated: boolean = useSelector((state: RootState) => state.authentication.isAuthenticated);
+    const { isAuthenticated, role } = useSelector((state: RootState) => state.authentication);
     useEffect(() => {
         if (isAuthenticated) {
+            if (isAdmin(role)){
+                navigate('/admin/panel');
+                return;
+            }
             navigate('/')
         }
     }, [isAuthenticated]);
