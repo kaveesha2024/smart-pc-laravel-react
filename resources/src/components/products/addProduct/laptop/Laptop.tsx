@@ -1,11 +1,16 @@
 import React, {  useState } from "react";
 import { Link } from "react-router";
-import AddProductIcon from "../../../icon/AddProductIcon.tsx";
 import LaptopIcon from "../../../icon/LaptopIcon.tsx";
 import LaptopForm from "./LaptopForm.tsx";
+import { IInputDetails } from "../../../../utility/types/addProduct/AddProduct.ts";
+import { useDispatch } from "react-redux";
+import AddProductIcon from "../../../icon/AddProductIcon.tsx";
+import AddProductApi from "../../../../utility/api/AddProductApi.ts";
+
 
 const Laptop: React.FC = () => {
-    const [inputDetails, setInputDetails] = useState({
+    const dispatch = useDispatch();
+    const [inputDetails, setInputDetails] = useState<IInputDetails>({
         category: "laptop",
         product_name: "",
         description: "",
@@ -25,13 +30,16 @@ const Laptop: React.FC = () => {
         operating_system: "",
         battery: ""
     });
-    console.log(inputDetails);
+
     const handleInputDetails = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = event.target;
         setInputDetails({
             ...inputDetails,
             [name]: value,
         });
+    };
+    const handleSubmit = async () => {
+        dispatch(AddProductApi(inputDetails));
     };
     return (
         <div className='w-full h-full p-5 xl:p-20'>
@@ -43,7 +51,7 @@ const Laptop: React.FC = () => {
                 </div>
                 <div className='bg-[#1a1a1a] w-full pt-2 px-5 overflow-y-auto h-full'>
                     <div className='max-w-7xl mx-auto py-6'>
-                        <LaptopForm handleInputDetails={handleInputDetails} />
+                        <LaptopForm handleInputDetails={handleInputDetails} inputDetails={inputDetails} handleSubmit={handleSubmit} />
                     </div>
                 </div>
             </div>

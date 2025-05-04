@@ -1,8 +1,10 @@
 import React from "react";
-import { IInputDetails } from "../../../../utility/types/addProduct/AddProduct.ts";
+import { ILaptopForm } from "../../../../utility/types/addProduct/AddProduct.ts";
+import { useSelector } from "react-redux";
 
 
-const LaptopForm:React.FC <IInputDetails> = ({ handleInputDetails }) => {
+const LaptopForm:React.FC <ILaptopForm> = ({ handleInputDetails,handleSubmit, inputDetails }) => {
+    const select = useSelector(state => state.addProduct.errState);
     return (
         <form className="space-y-4">
             <h1 className='text-white font-semibold text-xl text-center p-5'>Laptop Category</h1>
@@ -20,11 +22,14 @@ const LaptopForm:React.FC <IInputDetails> = ({ handleInputDetails }) => {
                 ].map((field) => (
                     <div key={field.id} className='flex flex-row gap-10 bg-[#2a2a2a] shadow-lg justify-between w-full items-center rounded-lg p-3 hover:bg-[#333333] transition-all duration-300'>
                         <label htmlFor={field.id} className="text-gray-200 font-medium min-w-[150px]">{field.label}</label>
-                        <p className='text-red-500 font-semibold'>Error</p>
+                        <p className='text-red-500 font-semibold'>
+                            {select && select[field.id] ? select[field.id] : ''}
+                        </p>
                         <input
                             type={field.type}
                             id={field.id}
                             name={field.id}
+                            value={inputDetails[field.id] || ''}
                             onChange={handleInputDetails}
                             className="flex-1 p-2 outline-none bg-[#1a1a1a] rounded-lg text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-gray-500 transition-all duration-300"
                         />
@@ -32,10 +37,13 @@ const LaptopForm:React.FC <IInputDetails> = ({ handleInputDetails }) => {
                 ))}
                 <div className='flex flex-row gap-10 bg-[#2a2a2a] shadow-lg justify-between w-full items-start rounded-lg p-3 hover:bg-[#333333] transition-all duration-300'>
                     <label htmlFor="long_description" className="text-gray-200 font-medium min-w-[150px] pt-2">Long Description</label>
-                    <p className='text-red-500 font-semibold'>Error</p>
+                    <p className='text-red-500 font-semibold'>
+                        {select && select.long_description ? select.long_description : ''}
+                    </p>
                     <textarea
                         id="long_description"
                         name="long_description"
+                        value={inputDetails.long_description || ''}
                         rows={4}
                         onChange={handleInputDetails}
                         className="flex-1 p-2 outline-none bg-[#1a1a1a] rounded-lg text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-gray-500 transition-all duration-300"
@@ -80,10 +88,13 @@ const LaptopForm:React.FC <IInputDetails> = ({ handleInputDetails }) => {
                 ].map((field) => (
                     <div key={field.id} className='flex flex-row gap-10 bg-[#2a2a2a] shadow-lg justify-between w-full items-center rounded-lg p-3 hover:bg-[#333333] transition-all duration-300'>
                         <label htmlFor={field.id} className="text-gray-200 font-medium min-w-[150px]">{field.label}</label>
-                        <p className='text-red-500 font-semibold'>Error</p>
+                        <p className='text-red-500 font-semibold'>
+                            {select && select[field.id] ? select[field.id] : ''}
+                        </p>
                         <select
                             id={field.id}
                             name={field.id}
+                            value={inputDetails[field.id] || ''}
                             onChange={handleInputDetails}
                             className="flex-1 p-2 outline-none bg-[#1a1a1a] rounded-lg text-gray-200 focus:ring-2 focus:ring-gray-500 transition-all duration-300"
                         >
@@ -98,6 +109,7 @@ const LaptopForm:React.FC <IInputDetails> = ({ handleInputDetails }) => {
             <div className="flex justify-end pt-6 pb-4">
                 <button
                     type="button"
+                    onClick={handleSubmit}
                     className="bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold py-2 px-6 rounded-lg shadow-lg transition-all duration-300 focus:ring-2 focus:ring-gray-500"
                 >
                     Save Product

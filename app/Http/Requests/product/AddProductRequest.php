@@ -32,11 +32,11 @@ class AddProductRequest extends FormRequest
         return [
             'product_name' => 'required|string|min:2',
             'description' => 'string:min:2|max:255',
-            'price' => 'required|decimal:0,2',
+            'price' => 'required|decimal:0,2|min:1',
             'image' => 'required',
             'category' => 'required|in:laptop,mobile,desktop,accessories',
             'brand' => 'string|Max:255',
-            'quantity' => 'required|integer',
+            'quantity' => 'required|integer|min:1',
             'status' => 'in:in stock,out of stock',
             'long_description' => 'max:1000',
             'ram' => 'required|in:4GB,8GB,16GB,32GB,64GB',
