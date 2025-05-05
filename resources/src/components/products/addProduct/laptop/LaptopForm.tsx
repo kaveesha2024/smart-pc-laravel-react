@@ -6,7 +6,7 @@ import { RootState } from "../../../../store.ts";
 import InputSelect from "./commonComponents/InputSelect.tsx";
 
 
-const LaptopForm:React.FC <ILaptopForm> = ({ handleInputDetails,handleSubmit, inputDetails }) => {
+const LaptopForm:React.FC <ILaptopForm> = ({ handleInputDetails,handleSubmit, inputDetails, handleClear }) => {
     const select = useSelector((state: RootState) => state.addProduct.errState);
     return (
         <form className="space-y-4">
@@ -138,7 +138,8 @@ const LaptopForm:React.FC <ILaptopForm> = ({ handleInputDetails,handleSubmit, in
                         options={["Windows 11 Home Single Language", "Windows 10 Home Single Language", "Windows 10 Pro", "Ubuntu"]}
                     />
             </div>
-            <div className="flex justify-end pt-6 pb-4">
+            <div className="flex justify-between pt-6 pb-4">
+                <button onClick={handleClear} type="button" className="bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold py-2 px-6 rounded-lg shadow-lg transition-all duration-300 focus:ring-2 focus:ring-gray-500">Clear</button>
                 <button
                     type="button"
                     onClick={handleSubmit}

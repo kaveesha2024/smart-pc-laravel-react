@@ -8,6 +8,7 @@ export interface ILaptopForm {
     ) => void;
     handleSubmit: () => void;
     inputDetails: IInputDetails;
+    handleClear: () => void;
 }
 export interface IInputDetails {
     category: string;
