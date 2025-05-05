@@ -2,6 +2,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+
 .navigationBar {
     @apply mr-4 font-semibold;
     display: inline;

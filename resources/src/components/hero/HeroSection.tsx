@@ -8,7 +8,7 @@ const HeroSection: React.FC = () => {
             <NavigationBar />
             <div className="w-full h-full flex flex-col md:flex-row items-center justify-center px-6 md:px-20 pt-24">
                 <div className="w-full md:w-1/2 h-full flex justify-center items-center text-center md:text-start">
-                    <h1 className="text-6xl sm:text-7xl lg:text-7xl font-bold text-white leading-tight">
+                    <h1 className="text-6xl  sm:text-7xl lg:text-7xl font-bold text-white leading-tight">
                         Build Your Dream Desktop <br className="hidden sm:block" /> With Us.
                     </h1>
                 </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import HeroSection from "../../components/hero/HeroSection.tsx";
-import ProductSection from "../../components/productSection/productSection.tsx";
+import ProductSection from "../../components/products/productSection/productSection.tsx";
 import Footer from "../../components/footer/Footer.tsx";
 
 const Welcome:React.FC = () => {
