@@ -16,3 +16,11 @@ finished the user sign in method.
 
 End point
 products
+
+
+dashboard api
+Total users as a number
+Total products as a number
+Total products as a number
+Total users as a number
+last recoded 20 users
