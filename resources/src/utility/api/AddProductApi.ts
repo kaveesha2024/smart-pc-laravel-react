@@ -2,11 +2,14 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { IInputDetails } from "../types/addProduct/AddProduct.ts";
+import { RootState } from "../../store.ts";
+import Swal from "sweetalert2";
 
 const AddProductApi = createAsyncThunk(
     'product/addProduct',
-    async ( data: IInputDetails, thunkAPI ) => {
-        const token = thunkAPI.getState().authentication.token;
+    async ( data: IInputDetails, thunkAPI) => {
+        const state = thunkAPI.getState() as RootState;
+        const token: string = state.authentication.token;
         try {
             if (!token) {
                 toast.error('You need to be logged in to add a product');
@@ -22,6 +25,11 @@ const AddProductApi = createAsyncThunk(
             return response.data;
         }catch (err) {
             console.log(err);
+            Swal.fire({
+                title: "The Internet?",
+                text: "That thing is still around?",
+                icon: "question"
+            });
         }
     }
 );

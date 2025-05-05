@@ -1,13 +1,6 @@
 import React from "react";
+import { IInputField } from "../../../../../utility/types/addProduct/AddProduct.ts";
 
-interface IInputField {
-    handleInputDetails: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void,
-    value: string | number
-    name: string,
-    type: string,
-    errState: string,
-    label: string,
-}
 const InputField: React.FC <IInputField> = ({ handleInputDetails, value, name, type, errState, label }) => {
     return (
         <div className='flex flex-row gap-10 bg-[#2a2a2a] shadow-lg justify-between w-full items-center rounded-lg p-3 hover:bg-[#333333] transition-all duration-300'>

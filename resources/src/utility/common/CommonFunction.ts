@@ -1,10 +1,7 @@
-import { err, IInitialState } from "../types/addProduct/AddProduct.ts";
+import { IInitialState, IPayload } from "../types/addProduct/AddProduct.ts";
 
-interface IPayload {
-    status: number,
-    errors: err
-}
-export const CommonFunction = (payload, state: IInitialState) => {
+
+export const CommonFunction = (payload: IPayload, state: IInitialState) => {
     if (payload.errors.product_name){
         state.errState.product_name = payload.errors.product_name
     }else {

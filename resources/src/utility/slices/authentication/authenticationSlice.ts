@@ -23,7 +23,7 @@ const authenticationSlice = createSlice({
     name: "AuthenticationSlice",
     initialState,
     reducers: {
-        signOut: (state) => {
+        signOut: (state: IInitialState) => {
             state.isAuthenticated = false;
             state.token = "";
             state.firstName = "";
@@ -36,7 +36,7 @@ const authenticationSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(userSignInApi.pending, (state) => {
+        builder.addCase(userSignInApi.pending, (state: IInitialState) => {
             state.isLoading = true;
         });
         builder.addCase(
@@ -83,7 +83,7 @@ const authenticationSlice = createSlice({
                 state.isAuthenticated = true;
             },
         );
-        builder.addCase(userSignInApi.rejected, (state) => {
+        builder.addCase(userSignInApi.rejected, (state: IInitialState) => {
             toast.error('error Occurred');
             state.isLoading = false;
         });

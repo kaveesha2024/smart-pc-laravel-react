@@ -81,7 +81,7 @@ const LaptopForm:React.FC <ILaptopForm> = ({ handleInputDetails,handleSubmit, in
                     <textarea
                         id="long_description"
                         name="long_description"
-                        value={inputDetails.long_description || ''}
+                        value={inputDetails.long_description}
                         rows={4}
                         onChange={handleInputDetails}
                         className="flex-1 p-2 outline-none bg-[#1a1a1a] rounded-lg text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-gray-500 transition-all duration-300"

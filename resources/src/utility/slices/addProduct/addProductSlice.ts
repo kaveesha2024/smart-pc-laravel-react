@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import AddProductApi from "../../api/AddProductApi.ts";
 import Swal from "sweetalert2";
 import { CommonFunction } from "../../common/CommonFunction.ts";
-import { IInitialState } from "../../types/addProduct/AddProduct.ts";
+import { IInitialState, IPayload } from "../../types/addProduct/AddProduct.ts";
 
 
 const initialState: IInitialState = {
@@ -36,8 +36,8 @@ const addProductSlice = createSlice({
         builder.addCase(AddProductApi.pending, (state: IInitialState): void => {
             state.isLoading = true;
         });
-        builder.addCase(AddProductApi.fulfilled, (state: IInitialState, action: PayloadAction<IInitialState>): void => {
-            const payload:IInitialState = action.payload;
+        builder.addCase(AddProductApi.fulfilled, (state: IInitialState, action: PayloadAction<IPayload>): void => {
+            const payload: IPayload = action.payload;
             state.isLoading = false;
             if (payload.status === 422) {
                 CommonFunction(payload, state);

@@ -54,3 +54,23 @@ export interface IInitialState {
     isLoading: boolean;
     errState: err;
 }
+export interface IInputSelect{
+    handleInputDetails: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
+    value: string;
+    name: string;
+    errState: string;
+    label: string;
+    options: string[];
+}
+export interface IInputField {
+    handleInputDetails: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void,
+    value: string | number
+    name: string,
+    type: string,
+    errState: string,
+    label: string,
+}
+export interface IPayload {
+    status: number,
+    errors: err
+}
