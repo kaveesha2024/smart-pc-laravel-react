@@ -1,10 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { IInputDetails } from "../types/addProduct/AddProduct.ts";
 
 const AddProductApi = createAsyncThunk(
     'product/addProduct',
-    async ( data, thunkAPI ) => {
+    async ( data: IInputDetails, thunkAPI ) => {
         const token = thunkAPI.getState().authentication.token;
         try {
             if (!token) {

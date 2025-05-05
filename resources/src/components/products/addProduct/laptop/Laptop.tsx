@@ -6,10 +6,11 @@ import { IInputDetails } from "../../../../utility/types/addProduct/AddProduct.t
 import { useDispatch } from "react-redux";
 import AddProductIcon from "../../../icon/AddProductIcon.tsx";
 import AddProductApi from "../../../../utility/api/AddProductApi.ts";
+import { dispatch } from "../../../../store.ts";
 
 
 const Laptop: React.FC = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<dispatch>();
     const [inputDetails, setInputDetails] = useState<IInputDetails>({
         category: "laptop",
         product_name: "",

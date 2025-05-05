@@ -24,5 +24,5 @@ export const store = configureStore({
         }),
 });
 export type dispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof rootReducer>;
 export const persistor = persistStore(store);

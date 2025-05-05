@@ -1,30 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import AddProductApi from "../../api/AddProductApi.ts";
 import Swal from "sweetalert2";
+import { CommonFunction } from "../../common/CommonFunction.ts";
+import { IInitialState } from "../../types/addProduct/AddProduct.ts";
 
-interface IInitialState {
-    status: number;
-    message: string;
-    isLoading: boolean;
-    errState: {
-        product_name: string;
-        description: string;
-        price: string;
-        image: string;
-        brand: string;
-        quantity: string;
-        ram: string;
-        processor: string;
-        storage: string;
-        graphics: string;
-        storage_type: string;
-        display: string;
-        color: string;
-        screen_size: string;
-        operating_system: string;
-        battery: string;
-    };
-}
+
 const initialState: IInitialState = {
     status: 0,
     isLoading: false,
@@ -53,62 +33,14 @@ const addProductSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder): void => {
-        builder.addCase(AddProductApi.pending, (state): void => {
+        builder.addCase(AddProductApi.pending, (state: IInitialState): void => {
             state.isLoading = true;
         });
-        builder.addCase(AddProductApi.fulfilled, (state, { payload }): void => {
+        builder.addCase(AddProductApi.fulfilled, (state: IInitialState, action: PayloadAction<IInitialState>): void => {
+            const payload:IInitialState = action.payload;
             state.isLoading = false;
             if (payload.status === 422) {
-                const {
-                    product_name,
-                    description,
-                    price,
-                    ram,
-                    processor,
-                    storage,
-                    graphics,
-                    storage_type,
-                    display,
-                    color,
-                    brand,
-                    screen_size,
-                    operating_system,
-                    battery,
-                    quantity,
-                    image,
-                } = payload.errors;
-                state.errState.product_name = "";
-                state.errState.description = "";
-                state.errState.price ="";
-                state.errState.image = "";
-                state.errState.brand = '';
-                state.errState.quantity = "";
-                state.errState.ram = "";
-                state.errState.processor = "";
-                state.errState.storage = "";
-                state.errState.graphics = "";
-                state.errState.storage_type = "";
-                state.errState.display = "";
-                state.errState.color = "";
-                state.errState.screen_size = "";
-                state.errState.operating_system = "";
-                state.errState.battery = "";
-                state.errState.product_name = product_name[0];
-                state.errState.description = description[0];
-                state.errState.price = price[0];
-                state.errState.image = image[0];
-                state.errState.brand = brand[0];
-                state.errState.quantity = quantity[0];
-                state.errState.ram = ram[0];
-                state.errState.processor = processor[0];
-                state.errState.storage = storage[0]
-                state.errState.graphics = graphics[0];
-                state.errState.storage_type = storage_type[0];
-                state.errState.display = display[0];
-                state.errState.color = color[0];
-                state.errState.screen_size = screen_size[0];
-                state.errState.operating_system = operating_system[0];
-                state.errState.battery = battery[0];
+                CommonFunction(payload, state);
                 return;
             }
             Swal.fire({
@@ -119,7 +51,7 @@ const addProductSlice = createSlice({
                 timer: 1500,
             });
         });
-        builder.addCase(AddProductApi.rejected, (state, { payload }) => {
+        builder.addCase(AddProductApi.rejected, (state: IInitialState) => {
             state.isLoading = false;
             Swal.fire({
                 icon: "error",
