@@ -5,6 +5,7 @@ import { IInputDetails } from "../types/addProduct/AddProduct.ts";
 import { RootState } from "../../store.ts";
 import Swal from "sweetalert2";
 
+let apiToast: any;
 const AddProductApi = createAsyncThunk(
     'product/addProduct',
     async ( data: IInputDetails, thunkAPI) => {
@@ -15,7 +16,7 @@ const AddProductApi = createAsyncThunk(
                 toast.error('You need to be logged in to add a product');
                 return;
             }
-            const apiToast = toast.loading('Loading...');
+            apiToast = toast.loading('Loading...');
             const response = await axios.post('/api/products/add-product', data, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -24,7 +25,7 @@ const AddProductApi = createAsyncThunk(
             toast.dismiss(apiToast);
             return response.data;
         }catch (err) {
-            console.log(err);
+            toast.dismiss(apiToast);
             Swal.fire({
                 title: "The Internet?",
                 text: "That thing is still around?",
