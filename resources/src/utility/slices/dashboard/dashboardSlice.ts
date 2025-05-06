@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import DashboardApi from "../../api/dashboard/DashboardApi.ts";
-import toast from "react-hot-toast";
 interface IInitialState {
     isLoading: boolean,
     status: number,
@@ -15,7 +14,6 @@ const initialState: IInitialState = {
     totalProducts: 0,
     latestSignupUsers: [],
 };
-let toastApi: any;
 const dashboardSlice = createSlice({
     name: "dashboard",
     initialState,
