@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PanelLargeBtn from "../commonComponents/panelLargeBtn/PanelLargeBtn.tsx";
 import AllUsersIcon from "../../icon/AllUsersIcon.tsx";
 import TotalProductIcon from "../../icon/TotalProductIcon.tsx";
 import OrdersIcon from "../../icon/OrdersIcon.tsx";
 import VisibilityIcon from "../../icon/VisibilityIcon.tsx";
+import DashboardApi from "../../../utility/api/dashboard/DashboardApi.ts";
+import { useDispatch } from "react-redux";
+import { dispatch } from "../../../store.ts";
 
 const Dashboard: React.FC = () => {
+    const dispatch = useDispatch<dispatch>();
+    useEffect(() => {
+        dispatch(DashboardApi());
+    }, []);
     const users = [
         {
             name: "Kaveesha",
