@@ -6,27 +6,29 @@ import OrdersIcon from "../../icon/OrdersIcon.tsx";
 import VisibilityIcon from "../../icon/VisibilityIcon.tsx";
 import DashboardApi from "../../../utility/api/dashboard/DashboardApi.ts";
 import { useDispatch, useSelector } from "react-redux";
-import { dispatch } from "../../../store.ts";
+import { dispatch, RootState } from "../../../store.ts";
+import { IUser } from "../../../utility/types/adminPanel/AdminPanel.ts";
+
 
 const Dashboard: React.FC = () => {
     const dispatch = useDispatch<dispatch>();
     useEffect(() => {
         dispatch(DashboardApi());
     }, []);
-    const select = useSelector(state => state.dashboard);
-    const users = select.latestSignupUsers;
-    console.log(select);
+    const select = useSelector((state: RootState) => state.dashboard);
+    // @ts-ignore
+    const users: IUser[] = select.latestSignupUsers;
     return (
         <div className='w-full h-full p-20 flex-col xl:flex-row flex gap-3 '>
             <div className='w-full h-full flex flex-wrap justify-start items-stretch gap-5 overflow-y-auto bg-white rounded-2xl shadow-2xl p-5 xl:w-[70%] '>
                 <PanelLargeBtn count={select.totalUsers} btnName="Total Users" Icon={AllUsersIcon} />
                 <PanelLargeBtn count={select.totalProducts} btnName="Total Products" Icon={TotalProductIcon} />
-                <PanelLargeBtn count="0" btnName="Orders" Icon={OrdersIcon} />
-                <PanelLargeBtn count="0" btnName="Total Viewers" Icon={VisibilityIcon} />
+                <PanelLargeBtn count={select.totalProducts} btnName="Orders" Icon={OrdersIcon} />
+                <PanelLargeBtn count={select.totalProducts} btnName="Total Viewers" Icon={VisibilityIcon} />
             </div>
             <div className="w-full xl:w-[30%] relative overflow-hidden z-50 h-full shadow-2xl rounded-2xl ">
                 <div className='absolute top-0 transition duration-300 overflow-x-auto w-full h-full backdrop-blur-2xl'>
-                    {users.length > 0 ? users.map((user, index) => (
+                    {users.length > 0 ? users.map((user: IUser, index: number) => (
                         <div key={index}>
                             <div className='flex flex-col sm:flex-row justify-between px-3 py-3 items-start sm:items-center w-full gap-3 sm:gap-0'>
                                 <div className='flex items-center gap-3'>
@@ -38,7 +40,7 @@ const Dashboard: React.FC = () => {
                                         />
                                     </div>
                                     <div className='ml-1'>
-                                        <h1 className='text-lg sm:text-xl text-[#262B31] font-bold'>{user.name}</h1>
+                                        <h1 className='text-lg sm:text-xl text-[#262B31] font-bold'>{user.first_name}</h1>
                                         <p className='text-sm break-all'>{user.email}</p>
                                     </div>
                                 </div>

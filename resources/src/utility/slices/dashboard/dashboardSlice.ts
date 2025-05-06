@@ -1,13 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import DashboardApi from "../../api/dashboard/DashboardApi.ts";
-interface IInitialState {
-    isLoading: boolean,
-    status: number,
-    totalUsers: number,
-    totalProducts: number,
-    latestSignupUsers: string[],
+import { IInitialStateDashboard } from "../../types/adminPanel/AdminPanel.ts";
+interface IDashboardPayload {
+    status: number;
+    total_products: number;
+    total_users: number;
+    latest_signup_users: [];
+
 }
-const initialState: IInitialState = {
+const initialState: IInitialStateDashboard = {
     isLoading: false,
     status: 0,
     totalUsers: 0,
@@ -19,10 +20,10 @@ const dashboardSlice = createSlice({
     initialState,
     reducers:{},
     extraReducers: builder => {
-        builder.addCase(DashboardApi.pending, (state) => {
+        builder.addCase(DashboardApi.pending, (state: IInitialStateDashboard) => {
             state.isLoading = true;
         });
-        builder.addCase(DashboardApi.fulfilled, (state, action) => {
+        builder.addCase(DashboardApi.fulfilled, (state: IInitialStateDashboard, action: PayloadAction<IDashboardPayload>) => {
             const payload = action.payload;
             state.isLoading = false;
             state.status = payload.status;
@@ -30,7 +31,7 @@ const dashboardSlice = createSlice({
             state.totalUsers = payload.total_users;
             state.latestSignupUsers = payload.latest_signup_users;
         });
-        builder.addCase(DashboardApi.rejected, (state) => {
+        builder.addCase(DashboardApi.rejected, (state: IInitialStateDashboard) => {
             state.isLoading = false;
         });
     }

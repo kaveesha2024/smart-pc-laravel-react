@@ -4,7 +4,7 @@ import { RootState } from "../../../store.ts";
 
 const DashboardApi =  createAsyncThunk(
     "dashboard/dashboard",
-    async (arg, thunkAPI) => {
+    async (_, thunkAPI) => {
         const state = thunkAPI.getState() as RootState;
         const token: string = state.authentication.token;
         const response = await axios.get('/api/dashboard', { headers: { Authorization: `Bearer ${token}` } });

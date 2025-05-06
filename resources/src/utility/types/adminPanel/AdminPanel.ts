@@ -7,6 +7,18 @@ export interface IAdminNavBtn {
 }
 export interface IPanelLargeBtn {
     btnName: string;
-    count: string;
+    count: number;
     Icon: React.FC;
+}
+export interface IUser  {
+    first_name: string;
+    email: string;
+    role: "admin" | "user" | string;
+}
+export interface IInitialStateDashboard {
+    isLoading: boolean,
+    status: number,
+    totalUsers: number,
+    totalProducts: number,
+    latestSignupUsers: string[],
 }
