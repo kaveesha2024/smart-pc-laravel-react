@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\ProductControlls\AddProductController;
 use App\Http\Controllers\UserControlls\GetUsersController;
 use App\Http\Controllers\UserControlls\UserSignInController;
@@ -21,3 +22,4 @@ Route::middleware([
     IsAdmin::class,
 ])->get('/users', [GetUsersController::class, 'getAllUsers']);
 Route::middleware('auth:sanctum')->post('/products/add-product',[AddProductController::class, 'addProduct'] );
+Route::middleware('auth:sanctum')->get('/dashboard', [DashboardController::class, 'dashboard']);
