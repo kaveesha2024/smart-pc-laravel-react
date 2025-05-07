@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router";
 import Dashboard from "../../../components/adminPanel/dashboard/Dashboard.tsx";
 import AddProduct from "../../../components/products/addProduct/AddProduct.tsx";
 import Laptop from "../../../components/products/addProduct/laptop/Laptop.tsx";
+import TotalUsers from "../../../components/user/totalUsers/TotalUsers.tsx";
 
 const Panel: React.FC = () => {
 
@@ -17,6 +18,7 @@ const Panel: React.FC = () => {
                     <Route path='/' element={<Dashboard />} />
                     <Route path='/add-product' element={<AddProduct />} />
                     <Route path='/add-product/laptop' element={<Laptop />} />
+                    <Route path='/total-users' element={<TotalUsers />} />
                 </Routes>
             </div>
         </div>

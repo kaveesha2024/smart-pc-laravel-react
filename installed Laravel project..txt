@@ -24,3 +24,5 @@ Total products as a number
 Total products as a number
 Total users as a number
 last recoded 20 users
+
+get all users api

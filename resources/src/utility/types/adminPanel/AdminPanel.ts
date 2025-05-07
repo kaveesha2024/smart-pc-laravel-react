@@ -22,3 +22,11 @@ export interface IInitialStateDashboard {
     totalProducts: number,
     latestSignupUsers: string[],
 }
+export interface IAllUsers {
+    id: number,
+    first_name: string,
+    last_name: string,
+    role: string,
+    email: string,
+    created_at: string,
+}
