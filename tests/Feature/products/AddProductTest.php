@@ -24,7 +24,6 @@ final class AddProductTest extends TestCase
             'password' => 'Kaveesha123',
         ] );
         $response->assertStatus(200);
-
         $response->assertJsonStructure([
             'status',
             'message',

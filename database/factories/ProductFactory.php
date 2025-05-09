@@ -24,6 +24,7 @@ class ProductFactory extends Factory
             'category' => $this->faker->randomElement(['laptop', 'mobile', 'desktop', 'accessories']),
             'brand' => $this->faker->word(),
             'quantity' => $this->faker->numberBetween(1, 100),
+            'created_at' => now(),
         ];
     }
 }
