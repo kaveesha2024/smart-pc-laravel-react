@@ -5,6 +5,7 @@ interface IUpdateUserInputFieldProp {
     type: string,
     label: string,
     inputHandler: (event: ChangeEvent<HTMLInputElement>) => void,
+    userUpdateInputFieldDetails: string,
 }
 const UpdateUserInputField: React.FC <IUpdateUserInputFieldProp> = ({ name, type, label, inputHandler, userUpdateInputFieldDetails }) => {
     return (
