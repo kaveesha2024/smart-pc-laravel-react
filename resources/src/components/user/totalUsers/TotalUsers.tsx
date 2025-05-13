@@ -3,13 +3,19 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store.ts";
 import { IAllUsers } from "../../../utility/types/adminPanel/AdminPanel.ts";
+import { NavigateFunction, useNavigate } from "react-router";
 
 const TotalUsers: React.FC = () => {
     const [allUsersDetails, setAllUsersDetails] = useState([]);
+    const navigate: NavigateFunction = useNavigate();
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     useEffect(() => {
-        fetchAllUsers();
-    }, [])
-    const token = useSelector((state: RootState) => state.authentication.token);
+        if (isLoading){
+            fetchAllUsers();
+            setIsLoading(false);
+        }
+    }, [isLoading]);
+    const token: string = useSelector((state: RootState) => state.authentication.token);
     const fetchAllUsers = async (): Promise<void> => {
         try {
             const response = await axios.get('/api/users', {headers : { Authorization: `Bearer ${token}` }});
@@ -18,6 +24,7 @@ const TotalUsers: React.FC = () => {
             console.log(error);
         }
     };
+
     return (
         <div className='p-20 h-full '>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -64,14 +71,14 @@ const TotalUsers: React.FC = () => {
                                 <td className="px-6 py-4">
                                     {user.created_at}
                                 </td>
-                                <td className="px-6 py-4 text-right">
-                                    <button className=" ml-5 p-2 font-semibold bg-black/80 text-white  hover:shadow-2xl rounded-sm hover:cursor-pointer">Update</button>
+                                <td className="px-6 py-4 text-right flex">
+                                    <button onClick={() => navigate('update', {state: user})} className=" ml-5 p-2 font-semibold bg-black/80 text-white  hover:shadow-2xl rounded-sm hover:cursor-pointer">Update</button>
                                     <button className=" ml-5 p-2 font-semibold bg-red-500 text-blue-950 hover:shadow-2xl rounded-sm hover:cursor-pointer">Delete</button>
                                 </td>
                             </tr>
                         )): <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
                             <td className="px-6 py-4">
-                                No Users Found
+                                <div className="border-[5px] border-transparent border-r-blue-600 rounded-full animate-spin w-[50px] h-[50px]"></div>
                             </td>
                         </tr>}
                     </tbody>

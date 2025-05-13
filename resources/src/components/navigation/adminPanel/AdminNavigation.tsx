@@ -69,7 +69,7 @@ const AdminNavigation: React.FC = () => {
                     </div>
                     <div className="w-full flex flex-col gap-2 justify-center items-start mt-5">
                         <button onClick={()=>{navigate("/admin/panel")}} className='adminNavigationBtn pt-4 border-t-1'>Dashboard <span><HomeIcon /></span></button>
-                        <AdminNavBtn onclick={()=>{navigate('/admin/panel/total-users')}} btnName="Total Users" Icon={AllUsersIcon} /> {/*comp->user*/}
+                        <AdminNavBtn onclick={()=>{navigate('/admin/panel/users')}} btnName="Total Users" Icon={AllUsersIcon} /> {/*comp->user*/}
                         <AdminNavBtn onclick={()=>{navigate('/admin/panel/total-products')}} btnName="Total Products" Icon={TotalProductIcon} />
                         <AdminNavBtn onclick={()=>{navigate('/admin/panel/add-product')}} btnName="Add Product" Icon={AddProductIcon} />
                         <AdminNavBtn onclick={()=>{navigate('/admin/panel/create-user')}} btnName="Create User" Icon={CreateUserIcon} /> {/*comp->user*/}
