@@ -1,17 +1,21 @@
 import React, { ChangeEvent, useState } from "react";
 import UpdateUserInputField from "./re-usable/UpdateUserInputField.tsx";
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
-import { IUserUpdateInputFieldDetails, updateErrState } from "../../../utility/types/updateUser/updateUser";
+import {
+    IUserUpdateInputFieldDetails,
+    updateErrState,
+} from "../../../utility/types/updateUser/updateUser";
 import { IAllUsers } from "../../../utility/types/adminPanel/AdminPanel";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store.ts";
 import handleUserUpdate from "../../../utility/api/updateUser/updateUser.ts";
 
-
 const UpdateUserForm: React.FC = () => {
     const userPrevDetails: IAllUsers = useLocation().state;
-    const navigate: NavigateFunction  = useNavigate();
-    const token: string = useSelector((state: RootState) => state.authentication.token);
+    const navigate: NavigateFunction = useNavigate();
+    const token: string = useSelector(
+        (state: RootState) => state.authentication.token,
+    );
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [userUpdateInputFieldDetails, setUserUpdateInputFieldDetails] =
         useState<IUserUpdateInputFieldDetails>({
@@ -38,7 +42,15 @@ const UpdateUserForm: React.FC = () => {
         });
     };
     const handleSubmit = async () => {
-        await handleUserUpdate(setIsLoading, userUpdateInputFieldDetails, token, userPrevDetails, setErrState, errState, navigate);
+        await handleUserUpdate(
+            setIsLoading,
+            userUpdateInputFieldDetails,
+            token,
+            userPrevDetails,
+            setErrState,
+            errState,
+            navigate,
+        );
     };
     return (
         <div className="p-20 w-full h-full ">
