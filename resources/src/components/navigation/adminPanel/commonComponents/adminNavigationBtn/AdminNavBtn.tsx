@@ -1,5 +1,5 @@
 import React from "react";
-import { IAdminNavBtn } from "../../../../../utility/types/adminPanel/AdminPanel.d.ts";
+import { IAdminNavBtn } from "../../../../../utility/types/adminPanel/AdminPanel";
 
 const AdminNavBtn: React.FC <IAdminNavBtn> = ({ onclick, btnName, Icon }) => {
     return (

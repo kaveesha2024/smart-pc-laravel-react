@@ -7,7 +7,7 @@ import VisibilityIcon from "../../icon/VisibilityIcon.tsx";
 import DashboardApi from "../../../utility/api/dashboard/DashboardApi.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { dispatch, RootState } from "../../../store.ts";
-import { IUser } from "../../../utility/types/adminPanel/AdminPanel.d.ts";
+import { IUser } from "../../../utility/types/adminPanel/AdminPanel";
 
 
 const Dashboard: React.FC = () => {

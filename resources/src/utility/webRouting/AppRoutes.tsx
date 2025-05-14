@@ -18,7 +18,7 @@ import {
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
 axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
-const WebRoutes: React.FC = () => {
+const AppRoutes: React.FC = () => {
     const { isAuthenticated, token, role, userId } = useSelector(
         (state: RootState) => state.authentication,
     );
@@ -49,4 +49,4 @@ const WebRoutes: React.FC = () => {
     );
 };
 
-export default WebRoutes;
+export default AppRoutes;

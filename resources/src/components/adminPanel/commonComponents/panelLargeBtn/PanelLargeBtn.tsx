@@ -1,5 +1,5 @@
 import React from "react";
-import { IPanelLargeBtn } from "../../../../utility/types/adminPanel/AdminPanel.d.ts";
+import { IPanelLargeBtn } from "../../../../utility/types/adminPanel/AdminPanel";
 
 const PanelLargeBtn: React.FC<IPanelLargeBtn> = ({ btnName, count, Icon }) => {
     return (

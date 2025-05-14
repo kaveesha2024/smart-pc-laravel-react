@@ -11,7 +11,7 @@ import UpdateUserForm from "../../../components/user/updateUser/UpdateUserForm.t
 const Panel: React.FC = () => {
 
     return (
-        <div className='w-full h-screen flex bg-[url("/admin-panel.jpg")] no-repeat fixed center center bg-cover bg-center bg-no-repeat '>
+        <div className='w-full h-screen flex  no-repeat fixed center center bg-cover bg-center bg-no-repeat '>
             <AdminNavigation />
             <div className='flex flex-col w-full h-full'>
                 <StatusBar />

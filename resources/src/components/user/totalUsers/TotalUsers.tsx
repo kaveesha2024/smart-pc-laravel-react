@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store.ts";
-import { IAllUsers } from "../../../utility/types/adminPanel/AdminPanel.d.ts";
 import { NavigateFunction, useNavigate } from "react-router";
+import {IAllUsers} from "../../../utility/types/adminPanel/AdminPanel";
 
 const TotalUsers: React.FC = () => {
     const [allUsersDetails, setAllUsersDetails] = useState([]);
@@ -78,7 +78,7 @@ const TotalUsers: React.FC = () => {
                             </tr>
                         )): <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
                             <td className="px-6 py-4">
-                                <div className="border-[5px] border-transparent border-r-blue-600 rounded-full animate-spin w-[50px] h-[50px]"></div>
+                                <div className="border-[5px] border-transparent  border-r-blue-600 rounded-full animate-spin w-[30px] h-[30px]"></div>
                             </td>
                         </tr>}
                     </tbody>

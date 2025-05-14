@@ -27,7 +27,7 @@
     transform: scaleX(1);
 }
 .adminNavigationBtn {
-    @apply  hover:bg-[#0000002b] transition cursor-pointer flex justify-between items-center py-3 border-b-1 w-full text-start
+    @apply  hover:bg-[#0000002b]  cursor-pointer flex justify-between items-center py-3 border-b-1 w-full text-start
 }
 .input-wrapper {
     @apply flex flex-row gap-10 bg-[#2a2a2a] shadow-lg justify-between w-full items-center rounded-lg p-3 hover:bg-[#333333] transition-all duration-300

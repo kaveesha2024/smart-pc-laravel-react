@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use JetBrains\PhpStorm\NoReturn;
 use Tests\TestCase;
 
-class GetAllUsersTest extends TestCase
+final class GetAllUsersTest extends TestCase
 {
     use RefreshDatabase;
     public function test_it_gets_a_bad_response_if_user_is_not_authorized_to_call_getAllUsers_endpoint()
