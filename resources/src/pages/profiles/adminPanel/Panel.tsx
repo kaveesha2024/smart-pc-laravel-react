@@ -4,21 +4,19 @@ import StatusBar from "../../../components/navigation/adminPanel/StatusBar.tsx";
 import { Route, Routes } from "react-router";
 import Dashboard from "../../../components/adminPanel/dashboard/Dashboard.tsx";
 import AddProduct from "../../../components/products/addProduct/AddProduct.tsx";
-import Laptop from "../../../components/products/addProduct/laptop/Laptop.tsx";
 import TotalUsers from "../../../components/user/totalUsers/TotalUsers.tsx";
 import UpdateUserForm from "../../../components/user/updateUser/UpdateUserForm.tsx";
 
 const Panel: React.FC = () => {
 
     return (
-        <div className='w-full h-screen flex  no-repeat fixed center center bg-cover bg-center bg-no-repeat '>
+        <div className='w-full h-screen flex'>
             <AdminNavigation />
-            <div className='flex flex-col w-full h-full'>
+            <div className='flex flex-col w-full  h-full'>
                 <StatusBar />
                 <Routes>
                     <Route path='/' element={<Dashboard />} />
-                    <Route path='/add-product' element={<AddProduct />} />
-                    <Route path='/add-product/laptop' element={<Laptop />} />
+                    <Route path='/total-products' element={<AddProduct />} />
                     <Route path='/users' element={<TotalUsers />} />
                     <Route path='/users/update' element={<UpdateUserForm />} />
                 </Routes>
