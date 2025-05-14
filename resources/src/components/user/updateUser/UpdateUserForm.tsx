@@ -3,10 +3,9 @@ import UpdateUserInputField from "./re-usable/UpdateUserInputField.tsx";
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
 import { IUserUpdateInputFieldDetails, updateErrState } from "../../../utility/types/updateUser/updateUser";
 import { IAllUsers } from "../../../utility/types/adminPanel/AdminPanel";
-import axios from "axios";
 import { useSelector } from "react-redux";
-import toast from "react-hot-toast";
 import { RootState } from "../../../store.ts";
+import handleUserUpdate from "../../../utility/api/updateUser/updateUser.ts";
 
 
 const UpdateUserForm: React.FC = () => {
@@ -26,7 +25,6 @@ const UpdateUserForm: React.FC = () => {
         last_name: "",
         email: "",
     });
-    console.log(errState);
     const inputHandler = (event: ChangeEvent<HTMLInputElement>): void => {
         setErrState({
             first_name: "",
@@ -40,49 +38,7 @@ const UpdateUserForm: React.FC = () => {
         });
     };
     const handleSubmit = async () => {
-        try {
-            setIsLoading(true);
-            const response = await axios.put(
-                "/api/users/user-update",
-                userUpdateInputFieldDetails,
-                {
-                    headers: { Authorization: "Bearer " + token },
-                    params: { id: userPrevDetails.id },
-                },
-            );
-            setIsLoading(false);
-            if (response.data.status === 422) {
-                if (response.data.errors.first_name) {
-                    setErrState({
-                        ...errState,
-                        first_name: response.data.errors.first_name[0],
-                    });
-                    return;
-                }
-                if (response.data.errors.last_name) {
-                    setErrState({
-                        ...errState,
-                        last_name: response.data.errors.last_name[0],
-                    });
-                    return;
-                }
-                if (response.data.errors.email) {
-                    setErrState({
-                        ...errState,
-                        email: response.data.errors.email[0],
-                    });
-                    return;
-                }
-            }
-            if (response.data.status === 401) {
-                toast.error(response.data.message);
-                return;
-            }
-            toast.success(response.data.message);
-            navigate("/admin/panel/users");
-        } catch (error) {
-            console.log(error);
-        }
+        await handleUserUpdate(setIsLoading, userUpdateInputFieldDetails, token, userPrevDetails, setErrState, errState, navigate);
     };
     return (
         <div className="p-20 w-full h-full ">
