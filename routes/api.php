@@ -11,11 +11,7 @@ use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
-//Route::get('/user', function (Request $request) {
-//    return [
-//        'message' => 'Hello Laravel !'
-//    ];
-//});
+
 Route::post('/users/user-signup', [UserSignupController::class, 'userSignup']);
 Route::post('/users/user-signin', [UserSignInController::class, 'userSignIn']);
 Route::middleware([
@@ -26,4 +22,4 @@ Route::middleware([
 Route::middleware('auth:sanctum')->post('/products/add-product',[AddProductController::class, 'addProduct'] );
 Route::middleware('auth:sanctum')->get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::get('/products', [GetAllProductsController::class, 'getAllProducts']);;
-Route::put('/users/user-update', [UserUpdateController::class, 'updateUser']);
+Route::middleware('auth:sanctum')->put('/users/user-update', [UserUpdateController::class, 'updateUser']);
