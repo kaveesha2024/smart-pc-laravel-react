@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import DashboardApi from "../../api/dashboard/DashboardApi.ts";
-import { IInitialStateDashboard } from "../../types/adminPanel/AdminPanel.ts";
+import { IInitialStateDashboard } from "../../types/adminPanel/AdminPanel.d.ts";
 interface IDashboardPayload {
     status: number;
     total_products: number;

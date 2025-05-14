@@ -1,4 +1,4 @@
-import { IInitialState, IPayload } from "../types/addProduct/AddProduct.ts";
+import { IInitialState, IPayload } from "../types/addProduct/AddProduct.d.ts";
 
 
 export const CommonFunction = (payload: IPayload, state: IInitialState) => {

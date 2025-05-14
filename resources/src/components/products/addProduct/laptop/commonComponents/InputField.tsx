@@ -1,5 +1,5 @@
 import React from "react";
-import { IInputField } from "../../../../../utility/types/addProduct/AddProduct.ts";
+import { IInputField } from "../../../../../utility/types/addProduct/AddProduct.d.ts";
 
 const InputField: React.FC <IInputField> = ({ handleInputDetails, value, name, type, errState, label }) => {
     return (

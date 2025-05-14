@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { ISignInForm } from "../../utility/types/userFormtypes/UserForms.ts";
+import { ISignInForm } from "../../utility/types/userFormtypes/UserForms.d.ts";
 import { RootState } from "../../store.ts";
 import React from "react";
 import { Link } from "react-router";

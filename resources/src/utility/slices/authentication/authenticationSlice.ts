@@ -3,7 +3,7 @@ import userSignInApi from "../../api/UserSignIn.ts";
 import {
     IInitialState,
     UserSignInPayload,
-} from "../../types/authenticationSlice/Authentication.ts";
+} from "../../types/authenticationSlice/Authentication.d.ts";
 import toast from "react-hot-toast";
 const initialState: IInitialState = {
     isLoading: false,

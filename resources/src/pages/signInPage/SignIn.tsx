@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import SignInForm from "./SignInForm.tsx";
 import userSignInApi from "../../utility/api/UserSignIn.ts";
 import { useDispatch, useSelector } from "react-redux";
-import { ISignIn } from "../../utility/types/userFormtypes/UserForms.ts";
+import { ISignIn } from "../../utility/types/userFormtypes/UserForms.d.ts";
 import { dispatch, RootState } from "../../store.ts";
 import { NavigateFunction, useNavigate } from "react-router";
 import { isAdmin } from "../../components/commonValidationConditions/CommonValidationConditions.ts";

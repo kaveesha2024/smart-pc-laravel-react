@@ -2,7 +2,7 @@ import React, {  useState } from "react";
 import { Link } from "react-router";
 import LaptopIcon from "../../../icon/LaptopIcon.tsx";
 import LaptopForm from "./LaptopForm.tsx";
-import { IInputDetails } from "../../../../utility/types/addProduct/AddProduct.ts";
+import { IInputDetails } from "../../../../utility/types/addProduct/AddProduct.d.ts";
 import { useDispatch } from "react-redux";
 import AddProductIcon from "../../../icon/AddProductIcon.tsx";
 import AddProductApi from "../../../../utility/api/AddProductApi.ts";

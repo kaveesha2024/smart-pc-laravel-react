@@ -1,5 +1,5 @@
 import React from "react";
-import { ILaptopForm } from "../../../../utility/types/addProduct/AddProduct.ts";
+import { ILaptopForm } from "../../../../utility/types/addProduct/AddProduct.d.ts";
 import { useSelector } from "react-redux";
 import InputField from "./commonComponents/InputField.tsx";
 import { RootState } from "../../../../store.ts";

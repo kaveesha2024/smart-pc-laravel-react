@@ -1,4 +1,4 @@
-import { IInputField } from "../../../utility/types/userFormtypes/UserForms.ts";
+import { IInputField } from "../../../utility/types/userFormtypes/UserForms.d.ts";
 import React from "react";
 
 const InputField: React.FC<IInputField> = ({

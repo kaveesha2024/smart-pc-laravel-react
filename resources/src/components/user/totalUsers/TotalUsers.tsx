@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store.ts";
-import { IAllUsers } from "../../../utility/types/adminPanel/AdminPanel.ts";
+import { IAllUsers } from "../../../utility/types/adminPanel/AdminPanel.d.ts";
 import { NavigateFunction, useNavigate } from "react-router";
 
 const TotalUsers: React.FC = () => {

@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import UpdateUserInputField from "./re-usable/UpdateUserInputField.tsx";
 import { useLocation } from "react-router";
-import { IAllUsers } from "../../../utility/types/adminPanel/AdminPanel.ts";
+import { IAllUsers } from "../../../utility/types/adminPanel/AdminPanel.d.ts";
 import { IUserUpdateInputFieldDetails } from "../../../utility/types/updateUser/updateUser";
 
 

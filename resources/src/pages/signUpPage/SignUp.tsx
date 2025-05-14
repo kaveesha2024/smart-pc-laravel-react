@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import SignUpForm from "./SignUpForm.tsx";
-import { IInputData } from "../../utility/types/userFormtypes/UserForms.ts";
+import { IInputData } from "../../utility/types/userFormtypes/UserForms.d.ts";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";

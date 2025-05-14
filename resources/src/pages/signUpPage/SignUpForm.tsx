@@ -1,4 +1,4 @@
-import { ISignUpForm } from "../../utility/types/userFormtypes/UserForms.ts";
+import { ISignUpForm } from "../../utility/types/userFormtypes/UserForms.d.ts";
 import React from "react";
 import { Link } from "react-router";
 

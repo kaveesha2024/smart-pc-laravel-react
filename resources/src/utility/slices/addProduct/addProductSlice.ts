@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import AddProductApi from "../../api/AddProductApi.ts";
 import Swal from "sweetalert2";
 import { CommonFunction } from "../../common/CommonFunction.ts";
-import { IInitialState, IPayload } from "../../types/addProduct/AddProduct.ts";
+import { IInitialState, IPayload } from "../../types/addProduct/AddProduct.d.ts";
 
 
 const initialState: IInitialState = {

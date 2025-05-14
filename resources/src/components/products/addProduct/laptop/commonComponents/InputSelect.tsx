@@ -1,5 +1,5 @@
 import React from "react";
-import { IInputSelect } from "../../../../../utility/types/addProduct/AddProduct.ts";
+import { IInputSelect } from "../../../../../utility/types/addProduct/AddProduct.d.ts";
 
 
 const InputSelect: React.FC <IInputSelect> = ({ handleInputDetails, value, name, errState, label, options }) => {

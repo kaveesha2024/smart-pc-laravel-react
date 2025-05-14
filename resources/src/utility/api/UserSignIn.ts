@@ -1,6 +1,6 @@
 import { AsyncThunk, createAsyncThunk } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
-import { ISignIn } from "../types/userFormtypes/UserForms.ts";
+import { ISignIn } from "../types/userFormtypes/UserForms.d.ts";
 import toast from "react-hot-toast";
 
 const userSignInApi: AsyncThunk<any, any, any> = createAsyncThunk(
