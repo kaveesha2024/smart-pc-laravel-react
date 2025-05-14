@@ -6,8 +6,9 @@ interface IUpdateUserInputFieldProp {
     label: string,
     inputHandler: (event: ChangeEvent<HTMLInputElement>) => void,
     userUpdateInputFieldDetails: string,
+    errState: string,
 }
-const UpdateUserInputField: React.FC <IUpdateUserInputFieldProp> = ({ name, type, label, inputHandler, userUpdateInputFieldDetails }) => {
+const UpdateUserInputField: React.FC <IUpdateUserInputFieldProp> = ({ name, type, label, inputHandler, userUpdateInputFieldDetails, errState }) => {
     return (
         <div className="mb-5">
             <label
@@ -16,6 +17,7 @@ const UpdateUserInputField: React.FC <IUpdateUserInputFieldProp> = ({ name, type
             >
                 {label}
             </label>
+            <p className="text-red-500 text-sm">{errState}</p>
             <input
                 type={type}
                 id={name}
