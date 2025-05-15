@@ -20,8 +20,14 @@ class AdminMiddleware
             if (Auth::user()['role'] === "admin") {
                 return $next($request);
             }
-            return response()->json(['message' => 'You are not authorized']);
+            return response()->json([
+                'status' => Response::HTTP_UNAUTHORIZED,
+                'message' => 'You are not authorized'
+            ]);
         }
-        return response()->json(['message' => 'Unauthorized']);
+        return response()->json([
+            'status' => Response::HTTP_UNAUTHORIZED,
+            'message' => 'Unauthorized'
+        ]);
     }
 }

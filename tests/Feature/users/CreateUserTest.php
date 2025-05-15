@@ -4,11 +4,7 @@ namespace Tests\Feature\users;
 
 
 
-use App\Models\User;
-use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 

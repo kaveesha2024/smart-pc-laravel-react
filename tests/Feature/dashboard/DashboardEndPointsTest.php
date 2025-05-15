@@ -1,9 +1,9 @@
 <?php
 
 namespace Tests\Feature\dashboard;
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 final class DashboardEndPointsTest extends TestCase
@@ -14,18 +14,9 @@ final class DashboardEndPointsTest extends TestCase
     {
         $user = User::factory()->create([
             'role' => 'admin'
-        ])->toArray();
-        User::factory()->count(500)->create()->toArray();
-        Product::factory()->count(356)->create()->toArray();
-
-        $loginResponse = $this->post('/api/users/user-signin', [
-            'email' => $user['email'],
-            'password' => 'Kaveesha123',
         ]);
-
-        $response = $this->withHeaders([
-            'Authorization' => 'Bearer '.$loginResponse->json()['token'],
-        ])->get('/api/dashboard');
+        Sanctum::actingAs($user);
+        $response = $this->get('/api/dashboard');
         $response->assertStatus(200);
         $response->assertJsonStructure([
             'status',

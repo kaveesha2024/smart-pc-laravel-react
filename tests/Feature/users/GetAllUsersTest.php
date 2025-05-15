@@ -6,7 +6,7 @@ namespace Tests\Feature\users;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use JetBrains\PhpStorm\NoReturn;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 final class GetAllUsersTest extends TestCase
@@ -17,22 +17,8 @@ final class GetAllUsersTest extends TestCase
         $user = User::factory()->create([
             'password' => bcrypt('Kaveesha123'),
         ]);
-        $response = $this->post('/api/users/user-signin', [
-            'email' => $user->email,
-            'password' => 'Kaveesha123',
-        ] );
-        $response->assertStatus(200);
-
-        $response->assertJsonStructure([
-            'status',
-            'message',
-            'token',
-            'user'
-        ]);
-        $token = $response->json()['token'];
-        $res = $this->withHeaders([
-            'Authorization' => 'Bearer '.$token,
-        ])->get('/api/users');
+        Sanctum::actingAs($user);
+        $res = $this->get('/api/users');
         $res->assertStatus(200);
         $res->assertJsonStructure([
             'message',
@@ -40,7 +26,7 @@ final class GetAllUsersTest extends TestCase
         ]);
         $res->assertSimilarJson([
             'status' => 401,
-            "message" => "you are not authorized to access this page"
+            "message" => "You are not authorized"
         ]);
     }
 

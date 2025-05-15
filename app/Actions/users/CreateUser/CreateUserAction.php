@@ -5,7 +5,6 @@ namespace App\Actions\users\CreateUser;
 use App\Models\User;
 use App\Responses\CommonResponses;
 use Illuminate\Support\Facades\Hash;
-use Symfony\Component\HttpFoundation\Response;
 
 class CreateUserAction
 {
