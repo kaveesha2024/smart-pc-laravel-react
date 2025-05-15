@@ -6,6 +6,7 @@ namespace Tests\Feature\product;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Log;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
@@ -19,9 +20,10 @@ final class AddProductTest extends TestCase
         ]);
         Sanctum::actingAs($user);
         $product = Product::factory()->make()->toArray();
-
+        Log::info($product);
         $response = $this->postJson('api/products/add-product', $product);
         $response->assertStatus(200);
+
         $response->assertJsonStructure([
             'status',
             'message',
