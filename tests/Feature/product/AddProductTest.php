@@ -4,7 +4,9 @@ namespace Tests\Feature\product;
 
 
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 final class AddProductTest extends TestCase
@@ -12,6 +14,10 @@ final class AddProductTest extends TestCase
     use RefreshDatabase;
     public function test_add_product_is_working_and_gets_a_good_response_if_an_admin_added_a_product_successfully()
     {
+        $user = User::factory()->create([
+            'role' => 'admin'
+        ]);
+        Sanctum::actingAs($user);
         $product = Product::factory()->make()->toArray();
 
         $response = $this->postJson('api/products/add-product', $product);

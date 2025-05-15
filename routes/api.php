@@ -6,6 +6,7 @@ use App\Http\Controllers\UserControlls\GetUsersController;
 use App\Http\Controllers\UserControlls\UserSignInController;
 use App\Http\Controllers\UserControlls\UserSignupController;
 use App\Http\Controllers\UserControlls\UserUpdateController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
@@ -20,4 +21,4 @@ Route::middleware([
 ])->get('/users', [GetUsersController::class, 'getAllUsers']);
 Route::middleware('auth:sanctum')->get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::middleware('auth:sanctum')->put('/users/user-update', [UserUpdateController::class, 'updateUser']);
-Route::post('/products/add-product', [ProductController::class, "addProduct"]);
+Route::middleware(AdminMiddleware::class)->post('/products/add-product', [ProductController::class, "addProduct"]);
