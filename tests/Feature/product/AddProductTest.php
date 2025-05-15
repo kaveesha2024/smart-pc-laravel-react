@@ -15,8 +15,25 @@ final class AddProductTest extends TestCase
         $product = Product::factory()->make()->toArray();
 
         $response = $this->postJson('api/products/add-product', $product);
-
         $response->assertStatus(200);
+        $response->assertJsonStructure([
+            'status',
+            'message',
+        ]);
+        $response->assertSimilarJson([
+            'status' => 200,
+            'message' => 'product added successfully',
+        ]);
+        $this->assertDatabaseHas('products', [
+            'product_id' => $product['product_id'],
+            'product_name' => $product['product_name'],
+            'description' => $product['description'],
+            'price' => $product['price'],
+            'labelled_price' => $product['labelled_price'],
+            'quantity' => $product['quantity'],
+            'card_description' => $product['card_description'],
+            'product_images' => $product['product_images'],
 
+        ]);
     }
 }

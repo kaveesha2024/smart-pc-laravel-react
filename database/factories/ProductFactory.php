@@ -23,7 +23,6 @@ class ProductFactory extends Factory
             'card_description' => $this->faker->text(),
             'price' => $this->faker->randomFloat(2, 100, 10000),
             'labelled_price' => $this->faker->randomFloat(2, 100, 10000),
-            'discount' => $this->faker->randomFloat(2, 100, 10000),
             'quantity' => $this->faker->numberBetween(0, 100),
             'product_images' => $this->faker->imageUrl(),
         ];
