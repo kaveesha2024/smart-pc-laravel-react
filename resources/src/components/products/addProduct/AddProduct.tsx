@@ -1,25 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import AddProductForm from "./AddProductForm.tsx";
 import addProductApi from "../../../utility/api/product/addProductApi/addProductApi.tsx";
-
-export interface IAddProductDetails {
-    productName: string;
-    description: string;
-    labelledPrice: number;
-    price: number;
-    quantity: number;
-    cardDescription: string;
-    images: FileList | File[] ;
-}
-export interface IAddProductErrState {
-    productName: string;
-    description: string;
-    labelledPrice: string;
-    price: string;
-    quantity: string;
-    cardDescription: string;
-    images: string;
-}
+import { IAddProductDetails, IAddProductErrState } from "../../../utility/types/product/addProduct/AddProduct";
 
 const AddProduct: React.FC = () => {
     const [inputDetails, setInputDetails] = useState<IAddProductDetails>({

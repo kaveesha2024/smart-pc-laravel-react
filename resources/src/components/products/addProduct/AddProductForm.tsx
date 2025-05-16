@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 import UpdateUserInputField from "../../user/updateUser/re-usable/UpdateUserInputField.tsx";
-import { IAddProductDetails, IAddProductErrState } from "./AddProduct.tsx";
+import { IAddProductDetails, IAddProductErrState } from "../../../utility/types/product/addProduct/AddProduct";
 
 interface IAddProductFormProp {
     handleInputDetails: (event: ChangeEvent<HTMLInputElement>) => void;

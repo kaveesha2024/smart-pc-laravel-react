@@ -1,11 +1,8 @@
 import toast from "react-hot-toast";
 import GetImageUrlsPromise from "../../../promises/getImageUrls/GetImageUrlsPromise.ts";
 import axios from "axios";
-import {
-    IAddProductDetails,
-    IAddProductErrState,
-} from "../../../../components/products/addProduct/AddProduct.tsx";
 import { store } from "../../../../store.ts";
+import { IAddProductDetails, IAddProductErrState } from "../../../types/product/addProduct/AddProduct";
 
  const addProductApi = async (
     inputDetails: IAddProductDetails,
