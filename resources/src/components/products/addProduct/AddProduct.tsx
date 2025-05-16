@@ -2,8 +2,10 @@ import React, { ChangeEvent, useState } from "react";
 import AddProductForm from "./AddProductForm.tsx";
 import addProductApi from "../../../utility/api/product/addProductApi/addProductApi.ts";
 import { IAddProductDetails, IAddProductErrState } from "../../../utility/types/product/addProduct/AddProduct";
+import {useNavigate} from "react-router";
 
 const AddProduct: React.FC = () => {
+    const navigate = useNavigate();
     const [inputDetails, setInputDetails] = useState<IAddProductDetails>({
         productName: "",
         description: "",
@@ -41,7 +43,10 @@ const AddProduct: React.FC = () => {
     };
 
     const handleSubmit = async () => {
-        await addProductApi(inputDetails, setErrState, errState, setInputDetails);
+        const response = await addProductApi(inputDetails, setErrState, errState, setInputDetails);
+        if (response){
+            navigate('/admin/panel/total-products');
+        }
     };
     return (
         <div className="w-full h-full overflow-y-scroll">

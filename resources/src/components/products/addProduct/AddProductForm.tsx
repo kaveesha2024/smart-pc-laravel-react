@@ -39,18 +39,18 @@ const AddProductForm: React.FC<IAddProductFormProp> = ({
                 userUpdateInputFieldDetails=''
             />
             <UpdateUserInputField
-                name={"price"}
-                type={"number"}
-                label={"Price Rs."}
-                errState={errState.price}
-                inputHandler={handleInputDetails}
-                userUpdateInputFieldDetails=''
-            />
-            <UpdateUserInputField
                 name={"labelledPrice"}
                 type={"number"}
                 label={"Labelled Price Rs."}
                 errState={errState.labelledPrice}
+                inputHandler={handleInputDetails}
+                userUpdateInputFieldDetails=''
+            />
+            <UpdateUserInputField
+                name={"price"}
+                type={"number"}
+                label={"Price Rs."}
+                errState={errState.price}
                 inputHandler={handleInputDetails}
                 userUpdateInputFieldDetails=''
             />

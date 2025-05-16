@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import AllUsersIcon from "../../icon/AllUsersIcon.tsx";
-import AddProductIcon from "../../icon/AddProductIcon.tsx";
 import TotalProductIcon from "../../icon/TotalProductIcon.tsx";
-import CreateUserIcon from "../../icon/CreateUserIcon.tsx";
 import OrdersIcon from "../../icon/OrdersIcon.tsx";
 import { useDispatch } from "react-redux";
 import { signOut } from "../../../utility/slices/authentication/authenticationSlice.ts";
@@ -69,10 +67,8 @@ const AdminNavigation: React.FC = () => {
                     </div>
                     <div className="w-full flex flex-col gap-2 justify-center items-start mt-5">
                         <button onClick={()=>{navigate("/admin/panel")}} className='adminNavigationBtn pt-4 border-t-1'>Dashboard <span><HomeIcon /></span></button>
-                        <AdminNavBtn onclick={()=>{navigate('/admin/panel/users')}} btnName="Total Users" Icon={AllUsersIcon} /> {/*comp->user*/}
-                        <AdminNavBtn onclick={()=>{navigate('/admin/panel/total-products')}} btnName="Total Products" Icon={TotalProductIcon} />
-                        <AdminNavBtn onclick={()=>{navigate('/admin/panel/add-product')}} btnName="Add Product" Icon={AddProductIcon} />
-                        <AdminNavBtn onclick={()=>{navigate('/admin/panel/create-user')}} btnName="Create User" Icon={CreateUserIcon} /> {/*comp->user*/}
+                        <AdminNavBtn onclick={()=>{navigate('/admin/panel/users')}} btnName=" Users" Icon={AllUsersIcon} /> {/*comp->user*/}
+                        <AdminNavBtn onclick={()=>{navigate('/admin/panel/total-products')}} btnName=" Products" Icon={TotalProductIcon} />
                         <AdminNavBtn onclick={()=>{navigate('/admin/panel/orders')}} btnName="Orders" Icon={OrdersIcon} /> {/*comp->order*/}
                     </div>
                 </div>

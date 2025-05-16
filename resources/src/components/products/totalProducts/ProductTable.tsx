@@ -85,8 +85,8 @@ const ProductTable: React.FC<IProductTableProp> = ({
                                         {product.card_description}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {/*<img className="bg-red-900 w-[60px] h-[60px]" src={product.product_images[0]} alt="No image Found" />*/}
-                                        {product.product_images[0]}
+                                        <img className=" w-[60px] h-[60px]" src={product.product_images[0]} alt="No image Found" />
+                                        {/*{product.product_images[0]}*/}
                                     </td>
                                     <td className="px-6 flex gap-2 justify-center items-center h-full  py-4">
                                         <button className="bg-blue-500 transition hover:scale-110 duration-150 hover:bg-blue-900 p-2 rounded-sm text-white">Update</button>
