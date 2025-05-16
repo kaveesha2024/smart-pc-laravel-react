@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { IInputDetails } from "../types/addProduct/AddProduct.d.ts";
+import { IInputDetails } from "../types/product/addProduct/AddProduct.d.ts";
 import { RootState } from "../../store.ts";
 import Swal from "sweetalert2";
 

@@ -16,3 +16,4 @@ Route::get('/users', [GetUsersController::class, 'getAllUsers'])->middleware(Adm
 Route::middleware('auth:sanctum')->get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::middleware('auth:sanctum')->put('/users/user-update', [UserUpdateController::class, 'updateUser']);
 Route::post('/products/add-product', [ProductController::class, "addProduct"])->middleware(AdminMiddleware::class)->middleware('auth:sanctum');
+Route::get('/products', [ProductController::class, "getAllProducts"]);

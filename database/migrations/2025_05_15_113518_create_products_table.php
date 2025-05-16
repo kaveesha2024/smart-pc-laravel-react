@@ -18,7 +18,7 @@ return new class extends Migration
             $table->longText('description');
             $table->decimal('price');
             $table->decimal('labelled_price');
-            $table->decimal('discount');
+            $table->decimal('discount')->default(0);
             $table->integer('quantity');
             $table->string('card_description');
             $table->longText('product_images');

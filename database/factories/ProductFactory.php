@@ -20,7 +20,7 @@ class ProductFactory extends Factory
             'product_name' => fake()->name(),
             'product_id' => fake()->name(),
             'description' => $this->faker->text(),
-            'card_description' => $this->faker->text(),
+            'card_description' => $this->faker->name(),
             'price' => $this->faker->randomFloat(2, 100, 10000),
             'labelled_price' => $this->faker->randomFloat(2, 100, 10000),
             'quantity' => $this->faker->numberBetween(0, 100),
