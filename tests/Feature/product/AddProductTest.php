@@ -21,6 +21,7 @@ final class AddProductTest extends TestCase
         Sanctum::actingAs($user);
         $product = Product::factory()->make()->toArray();
         $response = $this->postJson('api/products/add-product', $product);
+//        dd($response->json());
         $response->assertStatus(200);
         $response->assertJsonStructure([
             'status',
@@ -31,7 +32,6 @@ final class AddProductTest extends TestCase
             'message' => 'product added successfully',
         ]);
         $this->assertDatabaseHas('products', [
-            'product_id' => $product['product_id'],
             'product_name' => $product['product_name'],
             'description' => $product['description'],
             'price' => $product['price'],
@@ -80,7 +80,6 @@ final class AddProductTest extends TestCase
         $response->assertSimilarJson([
             'status' => Response::HTTP_UNPROCESSABLE_ENTITY,
             'errors' => [
-                'product_id' => ["The product id field is required."],
                 'product_name' => ["The product name field is required."],
                 'description' => ["The description field is required."],
                 'price' => ["The price field is required."],

@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import AddProductForm from "./AddProductForm.tsx";
-import addProductApi from "../../../utility/api/product/addProductApi/addProductApi.tsx";
+import addProductApi from "../../../utility/api/product/addProductApi/addProductApi.ts";
 import { IAddProductDetails, IAddProductErrState } from "../../../utility/types/product/addProduct/AddProduct";
 
 const AddProduct: React.FC = () => {

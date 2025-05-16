@@ -18,7 +18,6 @@ class ProductFactory extends Factory
     {
         return [
             'product_name' => fake()->name(),
-            'product_id' => fake()->name(),
             'description' => $this->faker->text(),
             'card_description' => $this->faker->name(),
             'price' => $this->faker->randomFloat(2, 100, 10000),

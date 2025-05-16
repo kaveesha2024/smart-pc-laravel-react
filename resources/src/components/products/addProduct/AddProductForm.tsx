@@ -27,7 +27,7 @@ const AddProductForm: React.FC<IAddProductFormProp> = ({
                 label={"Product Name"}
                 errState={errState.productName}
                 inputHandler={handleInputDetails}
-                userUpdateInputFieldDetails=""
+                userUpdateInputFieldDetails=''
             />
             <UpdateUserInputField
                 name={"description"}
@@ -36,7 +36,7 @@ const AddProductForm: React.FC<IAddProductFormProp> = ({
                 errState={errState.description}
                 inputHandler={handleInputDetails}
                 placeholder="Ex - Ram: 8GB, Storage: 512GB,"
-                userUpdateInputFieldDetails=""
+                userUpdateInputFieldDetails=''
             />
             <UpdateUserInputField
                 name={"price"}
@@ -44,7 +44,7 @@ const AddProductForm: React.FC<IAddProductFormProp> = ({
                 label={"Price Rs."}
                 errState={errState.price}
                 inputHandler={handleInputDetails}
-                userUpdateInputFieldDetails=""
+                userUpdateInputFieldDetails=''
             />
             <UpdateUserInputField
                 name={"labelledPrice"}
@@ -52,7 +52,7 @@ const AddProductForm: React.FC<IAddProductFormProp> = ({
                 label={"Labelled Price Rs."}
                 errState={errState.labelledPrice}
                 inputHandler={handleInputDetails}
-                userUpdateInputFieldDetails=""
+                userUpdateInputFieldDetails=''
             />
             <UpdateUserInputField
                 name={"quantity"}
@@ -60,7 +60,7 @@ const AddProductForm: React.FC<IAddProductFormProp> = ({
                 label={"Quantity"}
                 errState={errState.quantity}
                 inputHandler={handleInputDetails}
-                userUpdateInputFieldDetails=""
+                userUpdateInputFieldDetails=''
             />
             <UpdateUserInputField
                 name={"cardDescription"}
@@ -69,7 +69,7 @@ const AddProductForm: React.FC<IAddProductFormProp> = ({
                 placeholder="Type here what you want to display in the card"
                 errState={errState.cardDescription}
                 inputHandler={handleInputDetails}
-                userUpdateInputFieldDetails=""
+                userUpdateInputFieldDetails=''
             />
             <div className="mb-5">
                 <label
@@ -84,6 +84,7 @@ const AddProductForm: React.FC<IAddProductFormProp> = ({
                     type="file"
                     id="images"
                     name="images"
+                    defaultValue=''
                     onChange={(event: ChangeEvent<HTMLInputElement>) => {
                         setInputDetails({
                             ...inputDetails,
