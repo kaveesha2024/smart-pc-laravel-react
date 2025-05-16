@@ -1,24 +1,26 @@
 import React, { ChangeEvent, useState } from "react";
 import AddProductForm from "./AddProductForm.tsx";
+import addProductApi from "../../../utility/api/product/addProductApi/addProductApi.tsx";
 
-interface IAddProductDetails {
-    productName: string,
-    description: string,
-    labelledPrice: number,
-    price: number,
-    quantity: number,
-    cardDescription: string,
-    images: string[],
+export interface IAddProductDetails {
+    productName: string;
+    description: string;
+    labelledPrice: number;
+    price: number;
+    quantity: number;
+    cardDescription: string;
+    images: FileList | File[] ;
 }
 export interface IAddProductErrState {
-    productName: string,
-    description: string,
-    labelledPrice: string,
-    price: string,
-    quantity: string,
-    cardDescription: string,
-    images: string,
+    productName: string;
+    description: string;
+    labelledPrice: string;
+    price: string;
+    quantity: string;
+    cardDescription: string;
+    images: string;
 }
+
 const AddProduct: React.FC = () => {
     const [inputDetails, setInputDetails] = useState<IAddProductDetails>({
         productName: "",
@@ -38,20 +40,37 @@ const AddProduct: React.FC = () => {
         cardDescription: "",
         images: "",
     });
+    console.log(errState);
     const handleInputDetails = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
+        setErrState({
+            productName: "",
+            description: "",
+            labelledPrice: "",
+            price: "",
+            quantity: "",
+            cardDescription: "",
+            images: "",
+        })
         setInputDetails({
             ...inputDetails,
             [name]: value,
         });
     };
-    const handleSubmit = () => {
-        console.log(inputDetails);
+
+    const handleSubmit = async () => {
+        await addProductApi(inputDetails, setErrState, errState, setInputDetails);
     };
     return (
         <div className="w-full h-full overflow-y-scroll">
             <div className="p-20 w-full h-full">
-                <AddProductForm errState={errState} handleInputDetails={handleInputDetails} handleSubmit={handleSubmit} />
+                <AddProductForm
+                    errState={errState}
+                    setInputDetails={setInputDetails}
+                    inputDetails={inputDetails}
+                    handleInputDetails={handleInputDetails}
+                    handleSubmit={handleSubmit}
+                />
             </div>
         </div>
     );

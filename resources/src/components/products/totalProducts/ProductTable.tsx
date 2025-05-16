@@ -4,11 +4,14 @@ import {
     IAllProducts,
     IProductTableProp,
 } from "../../../utility/types/product/getProducts/GetProducts";
+import { IoIosAddCircle } from "react-icons/io";
+import { useNavigate } from "react-router";
 
 const ProductTable: React.FC<IProductTableProp> = ({
     allProducts,
     isLoading,
 }) => {
+    const navigate = useNavigate();
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -86,8 +89,8 @@ const ProductTable: React.FC<IProductTableProp> = ({
                                         {product.product_images[0]}
                                     </td>
                                     <td className="px-6 flex gap-2 justify-center items-center h-full  py-4">
-                                        <button className="bg-blue-500 p-2 rounded-sm text-white">Update</button>
-                                        <button className="bg-red-500 p-2 rounded-sm text-white">Delete</button>
+                                        <button className="bg-blue-500 transition hover:scale-110 duration-150 hover:bg-blue-900 p-2 rounded-sm text-white">Update</button>
+                                        <button className="bg-red-500 p-2 rounded-sm hover:scale-110 transition duration-150 hover:bg-red-900 text-white">Delete</button>
                                     </td>
                                 </tr>
                             ),
@@ -101,6 +104,9 @@ const ProductTable: React.FC<IProductTableProp> = ({
                     )}
                 </tbody>
             </table>
+            <div onClick={() => {navigate('add-product')}} className="text-6xl transition duration-300 hover:scale-110 hover:text-green-900 text-green-400 fixed bottom-10 right-5 ">
+                <IoIosAddCircle />
+            </div>
         </div>
     );
 };
