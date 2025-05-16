@@ -17,7 +17,7 @@ const TotalProducts: React.FC = () => {
         await fetchAllProductApiCall(setAllProducts);
     };
     return (
-        <div className="px-20 pt-20">
+        <div className="px-20 pt-20 overflow-y-auto">
             <ProductTable allProducts={allProducts} isLoading={isLoading} />
         </div>
     );

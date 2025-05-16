@@ -5,7 +5,7 @@ async function fetchAllProductApiCall(
     setAllProducts: (
         value: ((prevState: IAllProducts[]) => IAllProducts[]) | IAllProducts[],
     ) => void,
-) {
+): Promise<void> {
     try {
         const response = await axios.get("/api/products");
         if (response.data.status === 200) {

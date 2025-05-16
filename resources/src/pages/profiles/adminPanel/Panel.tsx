@@ -1,6 +1,5 @@
 import React from "react";
 import AdminNavigation from "../../../components/navigation/adminPanel/AdminNavigation.tsx";
-import StatusBar from "../../../components/navigation/adminPanel/StatusBar.tsx";
 import { Route, Routes } from "react-router";
 import Dashboard from "../../../components/adminPanel/dashboard/Dashboard.tsx";
 import TotalUsers from "../../../components/user/totalUsers/TotalUsers.tsx";
@@ -13,7 +12,6 @@ const Panel: React.FC = () => {
         <div className='w-full h-screen flex'>
             <AdminNavigation />
             <div className='flex flex-col w-full  h-full'>
-                <StatusBar />
                 <Routes>
                     <Route path='/' element={<Dashboard />} />
                     <Route path='/total-products' element={<TotalProducts />} />
