@@ -14,6 +14,7 @@ import {
     isAdmin,
     isAuth,
 } from "../../components/commonValidationConditions/CommonValidationConditions.ts";
+import SelectedProduct from "../../components/products/selectedProduct/SelectedProduct.tsx";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
 axios.defaults.withCredentials = true;
@@ -44,6 +45,7 @@ const AppRoutes: React.FC = () => {
                     }
                 />
                 <Route path="/user/profile" element={<Welcome />} />
+                <Route path="/product/*" element={<SelectedProduct />} />
             </Routes>
         </div>
     );

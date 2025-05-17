@@ -1,5 +1,5 @@
 import React from "react";
-import welcomeHero from "../../../public/welcome-hero.jpg";
+import welcomeHero from "/welcome-hero.jpg";
 import NavigationBar from "../navigation/main/NavigationBar.tsx";
 
 const HeroSection: React.FC = () => {
