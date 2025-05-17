@@ -26,7 +26,6 @@ const Welcome:React.FC = () => {
             console.error("Error fetching products:", error);
         }
     };
-    console.log(products);
 
     return (
         <div>

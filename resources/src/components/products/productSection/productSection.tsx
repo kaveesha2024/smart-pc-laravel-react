@@ -1,22 +1,8 @@
 import React  from "react";
 import 'aos/dist/aos.css';
 import { useNavigate } from "react-router";
+import { IProduct, IProductSectionProps } from "../../../utility/types/product/productSection/productSection";
 
-export interface IProduct {
-    product_id: string;
-    product_name: string;
-    discount: string;
-    card_description: string;
-    product_images: string[];
-    price: string;
-    labelled_price: string;
-    description: string;
-    quantity: number;
-};
-
-interface IProductSectionProps {
-    products: IProduct[];
-}
 
 const ProductSection: React.FC <IProductSectionProps> = ({ products }) => {
     const navigate = useNavigate();

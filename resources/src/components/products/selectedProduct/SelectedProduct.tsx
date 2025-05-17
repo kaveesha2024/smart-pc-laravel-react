@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
-import { IProduct } from "../productSection/productSection";
+import { IProduct } from "../../../utility/types/product/productSection/productSection";
 
 const SelectedProduct: React.FC = () => {
     const productDetails: IProduct  = useLocation ().state;
