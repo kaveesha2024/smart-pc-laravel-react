@@ -36,7 +36,7 @@ final class GetAllProductsTest extends TestCase
             'products' => [
                 [
 
-                    'product_id' => $products1['product_id'],
+                    'product_id' => 'SMP00000000',
                     'product_name' => $products1['product_name'],
                     'description' => $products1['description'],
                     'price' => (string) $products1['price'],
@@ -48,7 +48,7 @@ final class GetAllProductsTest extends TestCase
 
                 ],
                 [
-                    'product_id' => $products2['product_id'],
+                    'product_id' => 'SMP00000000',
                     'product_name' => $products2['product_name'],
                     'description' => $products2['description'],
                     'price' => (string)$products2['price'],
