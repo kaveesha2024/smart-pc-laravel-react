@@ -5,7 +5,13 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { NavigateFunction } from "react-router";
 
-const updateProductAction = async (file: FileList | null, updatedProduct: IUpdatedProductTypes, token: string, product: IAllProducts, navigate: NavigateFunction) => {
+const updateProductAction = async (
+    file: FileList | null,
+    updatedProduct: IUpdatedProductTypes,
+    token: string,
+    product: IAllProducts,
+    navigate: NavigateFunction,
+) => {
     if (file !== null && file.length > 0) {
         let promiseArray = [];
         for (let i = 0; i < file.length; i++) {
@@ -26,8 +32,8 @@ const updateProductAction = async (file: FileList | null, updatedProduct: IUpdat
             updatedProduct,
             {
                 headers: { Authorization: "Bearer " + token },
-                params: { productId: product.product_id }
-            }
+                params: { productId: product.product_id },
+            },
         );
 
         if (response.data.status === 200) {
@@ -36,7 +42,7 @@ const updateProductAction = async (file: FileList | null, updatedProduct: IUpdat
             return;
         }
 
-        toast.error(response.data.message);
+        toast.error("please fill all the fields");
 
         console.log(response);
     } catch (e) {
