@@ -89,7 +89,7 @@ const ProductTable: React.FC<IProductTableProp> = ({
                                         {/*{product.product_images[0]}*/}
                                     </td>
                                     <td className="px-6 flex gap-2 justify-center items-center h-full  py-4">
-                                        <button className="bg-blue-500 transition hover:scale-110 duration-150 hover:bg-blue-900 p-2 rounded-sm text-white">Update</button>
+                                        <button onClick={() => {navigate("update", {state: product})}} className="bg-blue-500 transition hover:scale-110 duration-150 hover:bg-blue-900 p-2 rounded-sm text-white">Update</button>
                                         <button className="bg-red-500 p-2 rounded-sm hover:scale-110 transition duration-150 hover:bg-red-900 text-white">Delete</button>
                                     </td>
                                 </tr>

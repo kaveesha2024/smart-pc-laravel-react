@@ -78,7 +78,6 @@ final class UpdateProductTest extends TestCase
             ]
         ]);
     }
-
     public function test_normal_user_is_unable_to_update_a_product()
     {
         $product = Product::factory()->create()->toArray();

@@ -6,6 +6,7 @@ import TotalUsers from "../../../components/user/totalUsers/TotalUsers.tsx";
 import UpdateUserForm from "../../../components/user/updateUser/UpdateUserForm.tsx";
 import TotalProducts from "../../../components/products/totalProducts/TotalProducts.tsx";
 import AddProduct from "../../../components/products/addProduct/AddProduct.tsx";
+import UpdateProduct from "../../../components/products/updateProduct/UpdateProduct.tsx";
 
 const Panel: React.FC = () => {
 
@@ -19,6 +20,7 @@ const Panel: React.FC = () => {
                     <Route path='/total-products/add-product' element={<AddProduct />} />
                     <Route path='/users' element={<TotalUsers />} />
                     <Route path='/users/update' element={<UpdateUserForm />} />
+                    <Route path='/total-products/update' element={<UpdateProduct />} />
                 </Routes>
             </div>
         </div>

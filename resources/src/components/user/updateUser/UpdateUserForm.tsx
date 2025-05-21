@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import UpdateUserInputField from "./re-usable/UpdateUserInputField.tsx";
+import FormInputField from "./re-usable/FormInputField.tsx";
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
 import {
     IUserUpdateInputFieldDetails,
@@ -61,7 +61,7 @@ const UpdateUserForm: React.FC = () => {
                     </div>
                 ) : (
                     <form className="max-w-sm mx-auto">
-                        <UpdateUserInputField
+                        <FormInputField
                             name={"first_name"}
                             type={"text"}
                             label={"First Name"}
@@ -71,7 +71,7 @@ const UpdateUserForm: React.FC = () => {
                                 userUpdateInputFieldDetails.first_name
                             }
                         />
-                        <UpdateUserInputField
+                        <FormInputField
                             name={"last_name"}
                             type={"text"}
                             label={"Last Name"}
@@ -81,7 +81,7 @@ const UpdateUserForm: React.FC = () => {
                                 userUpdateInputFieldDetails.last_name
                             }
                         />
-                        <UpdateUserInputField
+                        <FormInputField
                             name={"email"}
                             type={"email"}
                             label={"Email Address"}

@@ -5,11 +5,11 @@ interface IUpdateUserInputFieldProp {
     type: string;
     label: string;
     inputHandler: (event: ChangeEvent<HTMLInputElement>) => void;
-    userUpdateInputFieldDetails: string;
+    userUpdateInputFieldDetails: string | number;
     errState: string;
     placeholder?: string;
 }
-const UpdateUserInputField: React.FC<IUpdateUserInputFieldProp> = ({
+const FormInputField: React.FC<IUpdateUserInputFieldProp> = ({
     name,
     type,
     label,
@@ -40,4 +40,4 @@ const UpdateUserInputField: React.FC<IUpdateUserInputFieldProp> = ({
     );
 };
 
-export default UpdateUserInputField;
+export default FormInputField;
