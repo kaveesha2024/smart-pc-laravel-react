@@ -4,14 +4,12 @@ namespace App\Http\Controllers\Product;
 
 use App\Actions\product\AddProduct\AddProductAction;
 use App\Actions\product\GetAllProducts\GetAllProductsAction;
+use App\Actions\product\UpdateProduct\UpdateProductAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\AddProductRequest;
-use App\Models\Product;
+use App\Http\Requests\Product\UpdateProductRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
 {
@@ -26,27 +24,10 @@ class ProductController extends Controller
         return response()->json($getAllProductsAction());
     }
 
-    public function updateProduct(Request $request): JsonResponse
+    public function updateProduct(UpdateProductRequest $request, UpdateProductAction $UpdateProduct): JsonResponse
     {
-        $response = Product::where("product_id", $request['product_id'])->update([
-            'product_name' => $request['product_name'],
-            'description' => $request['description'],
-            'card_description' => $request['card_description'],
-            'price' => $request['price'],
-            'labelled_price' => $request['labelled_price'],
-            'quantity' => $request['quantity'],
-            'product_images' => $request['product_images'],
-        ]);
-        if (!$response) {
-        return response()->json([
-            'status' => Response::HTTP_NOT_FOUND,
-            'message' => 'product not found'
-        ]);
-    }
-        return response()->json([
-            'status' => Response::HTTP_OK,
-            'message' => 'product updated successfully'
-        ]);
+        $validatedProductUpdateRequest = $request->validated();
+        return response()->json($UpdateProduct($validatedProductUpdateRequest));
     }
 }
 

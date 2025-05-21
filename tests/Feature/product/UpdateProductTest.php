@@ -20,7 +20,7 @@ final class UpdateProductTest extends TestCase
             'role' => 'admin'
         ]);
         Sanctum::actingAs($user);
-        $res = $this->put('api/product/update/?product_id=SMP00000000', [
+        $res = $this->put('api/product/update/?productId=SMP00000000', [
             "product_name" => "testProduct",
             "description" => "testDescription",
             "card_description" => "testCardDescription",
@@ -30,6 +30,22 @@ final class UpdateProductTest extends TestCase
             "product_images" => $product['product_images']
         ]);
         $res->assertStatus(200);
-        dd($res->json());
+        $res->assertJsonStructure([
+            'status',
+            'message',
+        ]);
+        $res->assertSimilarJson([
+            'status' => 200,
+            'message' => 'product updated successfully',
+        ]);
+        $this->assertDatabaseHas('products', [
+            "product_name" => "testProduct",
+            "description" => "testDescription",
+            "card_description" => "testCardDescription",
+            "price" => 1000.99,
+            "labelled_price" => 1000.99,
+            "quantity" => 2,
+            "product_images" => $product['product_images']
+        ]);
     }
 }
